@@ -1,0 +1,80 @@
+.vacation-panel {
+  width: 10rem;
+  background-color: white;
+  color: black;
+  border-radius: 0.3rem;
+  box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.75);
+
+  &__title {
+    font-size: 1.2rem;
+  }
+
+  &__shop {
+    display: flex;
+    justify-content: space-evenly;
+    font-style: initial;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  &__shop-total {
+    margin-bottom: 1rem;
+  }
+
+  &__shop-total-price {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 6rem;
+  }
+
+  &__basket-button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__date {
+    font-size: 1rem;
+  }
+  &__description {
+    font-size: 1rem;
+  }
+
+  &__button {
+    margin-bottom: 1rem;
+    background-color: var(--navbar);
+  }
+
+  &__image {
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    width: 160px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .vacation-panel {
+    width: 100%;
+  }
+}
+
+.vacation-panels {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1.5rem;
+  /* justify-content: space-around; */
+}
+
+.vacation-panels-grid {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.vacation-panels {
+  margin-bottom: 7rem;
+}

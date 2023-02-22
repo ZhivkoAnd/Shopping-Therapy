@@ -1,0 +1,43 @@
+.navbar {
+  background-color: var(--navbar) !important;
+
+  &__colorThemeIcons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+  }
+
+  &__link {
+    color: blue;
+  }
+
+  &__link-active {
+    color: brown;
+  }
+
+  .sun,
+  .moon {
+    cursor: pointer;
+  }
+  .sun {
+    font-size: 1.85rem;
+  }
+
+  .moon {
+    font-size: 1.75rem;
+  }
+}
+
+.material-input::before {
+  color: white;
+  border-bottom: 1px solid rgb(255 255 255);
+}
+
+.material-box-dropdown {
+  border-color: white !important;
+  margin-right: 2rem;
+}
