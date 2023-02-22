@@ -2,14 +2,22 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Shop from "./components/Shop";
-import Layout from "./components/Layout";
+import Layout from "./components/ui/Layout";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [colorMode, setColorMode] = useState("dark");
+
+  const lightMode = () => {
+    setColorMode("light");
+  };
+
+  const darkMode = () => {
+    setColorMode("dark");
+  };
 
   return (
     <div className="App">
-      <Layout>
+      <Layout lightMode={lightMode} darkMode={darkMode}>
         <Shop />
         <div>
           <a href="https://vitejs.dev" target="_blank">
@@ -21,9 +29,6 @@ function App() {
         </div>
         <h1>Vite + React</h1>
         <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
           <p>
             Edit <code>src/App.tsx</code> and save to test HM
           </p>
