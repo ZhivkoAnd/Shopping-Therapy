@@ -15,7 +15,7 @@ const Basket = (props: any) => {
   );
 
   return (
-    <div>
+    <>
       <table className="table table-striped table-light">
         <thead>
           <tr>
@@ -59,7 +59,7 @@ const Basket = (props: any) => {
       <div className="vacation-panel__shop-total-price">
         Total: ${totalPrice}
       </div>
-    </div>
+    </>
   );
 };
 

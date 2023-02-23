@@ -65,7 +65,7 @@ const Shop = () => {
   };
 
   return (
-    <div className="container">
+    <>
       <div className="vacation-panels">
         {bookings.cities.map((city: any) => {
           return (
@@ -110,7 +110,7 @@ const Shop = () => {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

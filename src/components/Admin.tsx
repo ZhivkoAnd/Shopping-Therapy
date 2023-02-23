@@ -126,7 +126,7 @@ const Admin = () => {
   }
 
   return (
-    <div className="container">
+    <>
       <ActionBar
         inputQuery={inputQuery}
         setInputQuery={setInputQuery}
@@ -142,7 +142,7 @@ const Admin = () => {
         isLoadingDeletedElement={isLoadingDeletedElement}
       />
       <h1>Add new vacation</h1>
-      <form className="container" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Title</label>
           <input ref={titleRef} className="form-control"></input>
@@ -157,7 +157,7 @@ const Admin = () => {
         </div>
         <button type="submit">Add vacation</button>
       </form>
-    </div>
+    </>
   );
 };
 

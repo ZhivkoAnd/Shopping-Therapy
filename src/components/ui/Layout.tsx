@@ -10,11 +10,11 @@ interface Props {
 
 const Layout = ({ children, lightMode, darkMode }: Props) => {
   return (
-    <div>
+    <>
       <Navigation lightMode={lightMode} darkMode={darkMode} />
-      {children}
+      <div className="page-content container">{children}</div>
       <Footer />
-    </div>
+    </>
   );
 };
 
