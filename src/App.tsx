@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Shop from "./components/Shop";
+import Shop from "./components/Admin";
 import Layout from "./components/ui/Layout";
 import "../styles/Global.scss";
 import "../styles/Navigation.scss";
