@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import { UserAuth } from "../../utils/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
