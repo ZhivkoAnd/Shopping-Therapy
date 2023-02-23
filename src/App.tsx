@@ -13,6 +13,8 @@ import Admin from "./components/Admin";
 
 const Shop = lazy(() => import("./components/Shop"));
 const Vacations = lazy(() => import("./components/Vacations"));
+const Login = lazy(() => import("./components/ui/LoginPanel"));
+const Register = lazy(() => import("./components/ui/RegisterPanel"));
 
 function App() {
   const [colorMode, setColorMode] = useState("dark");
@@ -34,6 +36,8 @@ function App() {
               <Route path="/" element={<Admin />} />
               <Route path="shop" element={<Shop />} />
               <Route path="vacations" element={<Vacations />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
             </Routes>
           </Layout>
         </Suspense>
