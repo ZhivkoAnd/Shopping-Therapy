@@ -12,7 +12,6 @@ import ActionBar from "./ui/ActionBar";
 import AdminProductList from "./AdminProductList";
 
 const Admin = () => {
-
   const [inputQuery, setInputQuery] = useState("");
 
   const titleRef: any = useRef("");
@@ -29,7 +28,7 @@ const Admin = () => {
 
   const { data, isLoading, isError } = useQuery(["shop"], fetchBookingQuery, {
     onSuccess(data) {
-      console.log(data);
+      setFilters(data);
     },
   });
 
@@ -56,8 +55,8 @@ const Admin = () => {
 
   const { mutateAsync: deleteMutate, isLoading: isLoadingDeletedElement } =
     useMutation(deleteData, {
-      onSettled: (data) => {
-        queryClient.invalidateQueries(["bookings"]);
+      onSuccess: (data) => {
+        queryClient.invalidateQueries(["shop"]);
       },
     });
 
@@ -68,8 +67,8 @@ const Admin = () => {
   const [filterss, setFilters] = useState(data);
 
   const { mutateAsync: createMutate } = useMutation(createData, {
-    onSettled: (data) => {
-      queryClient.invalidateQueries(["bookings"]);
+    onSuccess: (data) => {
+      queryClient.invalidateQueries(["shop"]);
     },
   });
 
@@ -114,7 +113,7 @@ const Admin = () => {
     if (inputData && inputData.length) {
       setFilters(inputData);
     } else {
-      setFilters([]);
+      setFilters(data);
     }
   }, [inputQuery]);
 
@@ -127,8 +126,8 @@ const Admin = () => {
   }
 
   return (
-    <>
-     <ActionBar
+    <div className="container">
+      <ActionBar
         inputQuery={inputQuery}
         setInputQuery={setInputQuery}
         setFilterPriceAscending={setFilterPriceAscending}
@@ -137,27 +136,28 @@ const Admin = () => {
         setFilterTitleDescending={setFilterTitleDescending}
         isAdminPage
       />
-        <AdminProductList
+      <AdminProductList
         data={filterss}
         remove={remove}
         isLoadingDeletedElement={isLoadingDeletedElement}
       />
-       <form className="container">
-      <div className="form-group">
-        <label>Title</label>
-        <input ref={titleRef} className="form-control"></input>
-      </div>
-      <div className="form-group">
-        <label>Price</label>
-        <input ref={priceRef} type="number" className="form-control"></input>
-      </div>
-      <div className="form-group">
-        <label>Image</label>
-        <input ref={imageRef} className="form-control"></input>
-      </div>
-      <button type="submit">Add vacation</button>
-    </form>
-    </>
+      <h1>Add new vacation</h1>
+      <form className="container" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Title</label>
+          <input ref={titleRef} className="form-control"></input>
+        </div>
+        <div className="form-group">
+          <label>Price</label>
+          <input ref={priceRef} type="number" className="form-control"></input>
+        </div>
+        <div className="form-group">
+          <label>Image</label>
+          <input ref={imageRef} className="form-control"></input>
+        </div>
+        <button type="submit">Add vacation</button>
+      </form>
+    </div>
   );
 };
 
