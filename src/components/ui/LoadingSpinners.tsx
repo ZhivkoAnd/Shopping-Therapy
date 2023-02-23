@@ -7,7 +7,8 @@ const LoadingSpinners = ({ three_dots, magnifying_glass }: any) => {
       <div className="loading-container">
         {three_dots && (
           <ThreeDots
-            height="30"
+            height="15"
+            width={35}
             color="#ccc"
             ariaLabel="three-dots-loading"
             visible={true}

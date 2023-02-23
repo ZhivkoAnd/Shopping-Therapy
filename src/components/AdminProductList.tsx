@@ -28,7 +28,10 @@ const AdminProductList = ({
                 <th scope="row">{city.title}</th>
                 <td>
                   {city.price}
-                  <button onClick={() => remove(city.id)}>
+                  <button
+                    onClick={() => remove(city.id)}
+                    disabled={isLoadingDeletedElement ? true : false}
+                  >
                     {isLoadingDeletedElement ? (
                       <LoadingSpinners three_dots />
                     ) : (
