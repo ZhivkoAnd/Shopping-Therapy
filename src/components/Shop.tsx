@@ -10,7 +10,7 @@ const Shop = () => {
   const add = (clickedBooking: BookingProps) => {
     // Finds the item with the same id as the item we clicked
     const existingBooking = cartItems.find(
-      (booking) => booking.id === clickedBooking.id
+      (booking: any) => booking.id === clickedBooking.id
     );
     if (existingBooking) {
       // I map through the CartItems, and if the booking id is the same as clicked booking id, we return the same item but with increased quantity by 1,
@@ -30,7 +30,7 @@ const Shop = () => {
 
   // prettier-ignore
   const remove = (clickedBooking: BookingProps) => {
-      const existingBooking = cartItems.find((x) => x.id === clickedBooking.id);
+      const existingBooking = cartItems.find((x: any) => x.id === clickedBooking.id);
       if (existingBooking) {
          // I map through the CartItems, and if the booking id is the same as clicked booking id, we return the same item but decrease the qty by 1
          // I also check if the qty of that item is more than 1, because we don't want to go negative qty.
@@ -59,7 +59,7 @@ const Shop = () => {
   );
 
   const removeItem = (clickedBooking: BookingProps) => {
-    setCartItems(cartItems.filter((e) => e.id !== clickedBooking.id));
+    setCartItems(cartItems.filter((e: any) => e.id !== clickedBooking.id));
   };
 
   return (
