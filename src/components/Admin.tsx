@@ -10,7 +10,6 @@ import LoadingSpinners from "./ui/LoadingSpinners";
 import ErrorUI from "./ui/ErrorUI";
 import ActionBar from "./ui/ActionBar";
 import AdminProductList from "./AdminProductList";
-import AdminProductList2 from "./AdminProductList2";
 
 const Admin = () => {
   const [inputQuery, setInputQuery] = useState("");
@@ -138,11 +137,6 @@ const Admin = () => {
         isAdminPage
       />
       <AdminProductList
-        data={filterss}
-        remove={remove}
-        isLoadingDeletedElement={isLoadingDeletedElement}
-      />
-      <AdminProductList2
         data={filterss}
         remove={remove}
         isLoadingDeletedElement={isLoadingDeletedElement}
