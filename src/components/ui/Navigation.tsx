@@ -19,7 +19,7 @@ import AuthenticationMenu from "./AuthenticationMenu";
 const pages = [
   {
     id: 1,
-    label: "Vacations",
+    label: "Admin",
     link: "/",
   },
   {
@@ -29,8 +29,8 @@ const pages = [
   },
   {
     id: 3,
-    label: "Admin",
-    link: "/admin",
+    label: "Vacations",
+    link: "/vacations",
   },
 ];
 

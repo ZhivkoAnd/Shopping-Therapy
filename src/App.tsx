@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Shop from "./components/Shop";
 import Admin from "./components/Admin";
+import Vacations from "./components/Vacations";
 import Layout from "./components/ui/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "../styles/Global.scss";
@@ -28,6 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Admin />} />
             <Route path="shop" element={<Shop />} />
+            <Route path="vacations" element={<Vacations />} />
           </Routes>
         </Layout>
       </BrowserRouter>
