@@ -8,6 +8,7 @@ import {
 } from "../utils/FilterFunctions";
 import LoadingSpinners from "../components/ui/LoadingSpinners";
 import ErrorUI from "../components/ui/ErrorUI";
+import ActionBar from "../components/ui/ActionBar";
 
 const Shop = () => {
 
@@ -125,7 +126,17 @@ const Shop = () => {
   }
 
   return (
-    <form className="container">
+    <>
+     <ActionBar
+        inputQuery={inputQuery}
+        setInputQuery={setInputQuery}
+        setFilterPriceAscending={setFilterPriceAscending}
+        setFilterPriceDescending={setFilterPriceDescending}
+        setFilterTitleAscending={setFilterTitleAscending}
+        setFilterTitleDescending={setFilterTitleDescending}
+        isAdminPage
+      />
+       <form className="container">
       <div className="form-group">
         <label>Title</label>
         <input ref={titleRef} className="form-control"></input>
@@ -140,6 +151,7 @@ const Shop = () => {
       </div>
       <button type="submit">Add vacation</button>
     </form>
+    </>
   );
 };
 
