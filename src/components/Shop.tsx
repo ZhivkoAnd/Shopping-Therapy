@@ -9,6 +9,7 @@ import {
 import LoadingSpinners from "../components/ui/LoadingSpinners";
 import ErrorUI from "../components/ui/ErrorUI";
 import ActionBar from "../components/ui/ActionBar";
+import AdminProductList from "./AdminProductList";
 
 const Shop = () => {
 
@@ -135,6 +136,11 @@ const Shop = () => {
         setFilterTitleAscending={setFilterTitleAscending}
         setFilterTitleDescending={setFilterTitleDescending}
         isAdminPage
+      />
+        <AdminProductList
+        data={filterss}
+        remove={remove}
+        isLoadingDeletedElement={isLoadingDeletedElement}
       />
        <form className="container">
       <div className="form-group">
