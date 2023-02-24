@@ -18,7 +18,7 @@ export const FetchVacationsClient = () => {
 };
 
 const fetchBookingQuery = async () => {
-  const response = await fetch("http://localhost:4000/");
+  const response = await fetch(`${import.meta.env.VITE_API_KEY}`);
   return response.json();
 };
 

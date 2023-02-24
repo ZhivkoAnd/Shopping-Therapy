@@ -10,10 +10,6 @@ import LoadingSpinners from "./ui/LoadingSpinners";
 import ErrorUI from "./ui/ErrorUI";
 import ActionBar from "./ui/ActionBar";
 import AdminProductList from "./AdminProductList";
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import Button from '@mui/material/Button';
 
 const Admin = () => {
   const [inputQuery, setInputQuery] = useState("");
@@ -26,7 +22,7 @@ const Admin = () => {
 
   const fetchBookingQuery = async () => {
     // We receive the response from the server
-    const response = await fetch("http://localhost:4000/cities");
+    const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`);
     return response.json();
   };
 
@@ -37,7 +33,7 @@ const Admin = () => {
   });
 
   const createData = async (data: {}) => {
-    const response = await fetch("http://localhost:4000/cities", {
+    const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,9 +44,12 @@ const Admin = () => {
   };
 
   const deleteData = async (id: number) => {
-    const response = await fetch(`http://localhost:4000/cities/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_API_KEY}/cities/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     if (!response.ok) {
       throw new Error();
     }
