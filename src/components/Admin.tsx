@@ -10,6 +10,10 @@ import LoadingSpinners from "./ui/LoadingSpinners";
 import ErrorUI from "./ui/ErrorUI";
 import ActionBar from "./ui/ActionBar";
 import AdminProductList from "./AdminProductList";
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import Button from '@mui/material/Button';
 
 const Admin = () => {
   const [inputQuery, setInputQuery] = useState("");

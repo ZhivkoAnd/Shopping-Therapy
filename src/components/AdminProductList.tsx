@@ -47,14 +47,16 @@ const AdminProductList = ({
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell> Product</StyledTableCell>
-            <StyledTableCell align="right">Price</StyledTableCell>
-            <StyledTableCell align="right">-</StyledTableCell>
+          <StyledTableCell> Product ID</StyledTableCell>
+            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell align="center">Price</StyledTableCell>
+            <StyledTableCell align="center">-</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data?.map((row: any) => (
             <StyledTableRow key={row.id}>
+               <StyledTableCell align="center">{row.id}</StyledTableCell>
               <StyledTableCell component="th" scope="row">
                 <img
                   src={row.image}
@@ -62,8 +64,8 @@ const AdminProductList = ({
                 />
                 {row.title}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.price}</StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell align="center">{row.price}</StyledTableCell>
+              <StyledTableCell align="center">
               <Button variant="contained" startIcon={<DeleteIcon />}
                   onClick={() => remove(row.id)}
                   disabled={isLoadingDeletedElement ? true : false}
