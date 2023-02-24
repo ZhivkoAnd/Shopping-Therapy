@@ -12,8 +12,9 @@ import ActionBar from "./ui/ActionBar";
 import AdminProductList from "./AdminProductList";
 import CreateUpdateProduct from "../components/CreateUpdateProduct";
 import { Link } from "react-router-dom";
-import { deleteData } from "../utils/FetchQueryClient";
-import { createData } from "../utils/FetchQueryClient";
+import { deleteData } from "../utils/API";
+import { createData } from "../utils/API";
+import { fetchBookingQuery } from "../utils/API";
 
 const Admin = () => {
   const [inputQuery, setInputQuery] = useState("");
@@ -23,12 +24,6 @@ const Admin = () => {
   const imageRef: any = useRef("");
 
   const queryClient = useQueryClient();
-
-  const fetchBookingQuery = async () => {
-    // We receive the response from the server
-    const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`);
-    return response.json();
-  };
 
   const { data, isLoading, isError } = useQuery(["shop"], fetchBookingQuery, {
     onSuccess(data) {

@@ -17,6 +17,7 @@ export const FetchVacationsClient = () => {
 };
 
 // Products
+
 // Delete Data
 
 export const deleteData = async (id: number) => {
@@ -55,5 +56,21 @@ export const updateData = async (data: any, id: any) => {
       body: JSON.stringify(data),
     }
   );
+  return response.json();
+};
+
+// Get Data
+
+export const getProduct = async ({ queryKey }: any) => {
+  const [_key, { id }] = queryKey;
+  const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities/${id}`);
+  return response.json();
+};
+
+// Get all Books
+
+export const fetchBookingQuery = async () => {
+  // We receive the response from the server
+  const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`);
   return response.json();
 };

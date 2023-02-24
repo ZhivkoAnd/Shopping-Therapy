@@ -1,7 +1,7 @@
 "use client";
 
 import VacationPanelContentful from "../components/ui/VacationPanelContentful";
-import { FetchVacationsClient } from "../utils/FetchQueryClient";
+import { FetchVacationsClient } from "../utils/API";
 import { useState, useEffect } from "react";
 import {
   filterDateAscending,
