@@ -12,6 +12,8 @@ import ActionBar from "./ui/ActionBar";
 import AdminProductList from "./AdminProductList";
 import CreateUpdateProduct from "../components/CreateUpdateProduct";
 import { Link } from "react-router-dom";
+import { deleteData } from "../utils/FetchQueryClient";
+import { createData } from "../utils/FetchQueryClient";
 
 const Admin = () => {
   const [inputQuery, setInputQuery] = useState("");
@@ -34,33 +36,9 @@ const Admin = () => {
     },
   });
 
-  const createData = async (data: {}) => {
-    const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return response.json();
-  };
-
-  const deleteData = async (id: number) => {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_KEY}/cities/${id}`,
-      {
-        method: "DELETE",
-      }
-    );
-    if (!response.ok) {
-      throw new Error();
-    }
-    return true;
-  };
-
   const { mutateAsync: deleteMutate, isLoading: isLoadingDeletedElement } =
     useMutation(deleteData, {
-      onSuccess: (data) => {
+      onSuccess: () => {
         queryClient.invalidateQueries(["shop"]);
       },
     });
