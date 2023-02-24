@@ -1,8 +1,7 @@
-"use client";
-
 import { createClient } from "contentful";
 import { useQuery } from "@tanstack/react-query";
 
+//Contentful
 const fetchQuery = async () => {
   const client = createClient({
     space: "6yu8mnoa9wdc",
@@ -17,11 +16,4 @@ export const FetchVacationsClient = () => {
   return useQuery(["vacations"], fetchQuery);
 };
 
-const fetchBookingQuery = async () => {
-  const response = await fetch(`${import.meta.env.VITE_API_KEY}`);
-  return response.json();
-};
-
-export const FetchBookings = () => {
-  return useQuery(["bookings"], fetchBookingQuery);
-};
+// Products

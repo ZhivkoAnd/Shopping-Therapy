@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -23,6 +23,23 @@ const CreateUpdateProduct = ({
     ["product", { id }],
     getProduct
   );
+
+  const updateBook = async () => {
+    const data = { id, titleRef, priceRef, imageRef };
+    const response = await fetch(
+      `${process.env.REACT_APP_API_SERVER}/books/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    return response.json();
+  };
+
+  const { mutateAsync, isLoading: isMutating } = useMutation(updateBook);
 
   if (isLoading) {
     return <div>Loading update :</div>;
