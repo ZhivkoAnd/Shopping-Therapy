@@ -48,9 +48,10 @@ const AdminProductList = ({
         <TableHead>
           <TableRow>
           <StyledTableCell> Product ID</StyledTableCell>
+           <StyledTableCell>Image</StyledTableCell>
             <StyledTableCell>Name</StyledTableCell>
             <StyledTableCell align="center">Price</StyledTableCell>
-            <StyledTableCell align="center">-</StyledTableCell>
+            <StyledTableCell align="right">-</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -58,12 +59,13 @@ const AdminProductList = ({
             <StyledTableRow key={row.id}>
                <StyledTableCell align="center">{row.id}</StyledTableCell>
               <StyledTableCell component="th" scope="row">
-                <img
-                  src={row.image}
-                  style={{ width: "80px", height: "80px" }}
-                />
+               
                 {row.title}
               </StyledTableCell>
+              <StyledTableCell align="center"> <img
+                  src={row.image}
+                  style={{ width: "80px", height: "80px" }}
+                /></StyledTableCell>
               <StyledTableCell align="center">{row.price}</StyledTableCell>
               <StyledTableCell align="center">
               <Button variant="contained" startIcon={<DeleteIcon />}
