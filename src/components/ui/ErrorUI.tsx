@@ -1,9 +1,14 @@
-import React from 'react'
+import error from "../../assets/error.png";
 
-const ErrorUI = () => {
+const Error = () => {
   return (
-    <div>ErrorUI</div>
-  )
-}
+    <div className="container">
+      <div className="error-container">
+        <p className="error-container__text">Sorry, something went wrong !</p>
+        <img src={error} alt="Error-image" />
+      </div>
+    </div>
+  );
+};
 
-export default ErrorUI
+export default Error;
