@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import LoadingSpinners from "./ui/LoadingSpinners";
 import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const StyledTableCell = styled(TableCell)(({ theme }: any) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -63,7 +64,7 @@ const AdminProductList = ({
               </StyledTableCell>
               <StyledTableCell align="right">{row.price}</StyledTableCell>
               <StyledTableCell align="right">
-              <Button variant="contained" size="small"
+              <Button variant="contained" startIcon={<DeleteIcon />}
                   onClick={() => remove(row.id)}
                   disabled={isLoadingDeletedElement ? true : false}
                 >
