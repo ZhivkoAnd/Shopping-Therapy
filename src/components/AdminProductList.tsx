@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import LoadingSpinners from "./ui/LoadingSpinners";
+import Button from '@mui/material/Button';
 
 const StyledTableCell = styled(TableCell)(({ theme }: any) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -56,13 +57,13 @@ const AdminProductList = ({
               <StyledTableCell component="th" scope="row">
                 <img
                   src={row.image}
-                  style={{ width: "30px", height: "30px" }}
+                  style={{ width: "80px", height: "80px" }}
                 />
                 {row.title}
               </StyledTableCell>
               <StyledTableCell align="right">{row.price}</StyledTableCell>
               <StyledTableCell align="right">
-                <button
+              <Button variant="contained" size="small"
                   onClick={() => remove(row.id)}
                   disabled={isLoadingDeletedElement ? true : false}
                 >
@@ -71,7 +72,7 @@ const AdminProductList = ({
                   ) : (
                     "Delete"
                   )}
-                </button>
+                </Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}
