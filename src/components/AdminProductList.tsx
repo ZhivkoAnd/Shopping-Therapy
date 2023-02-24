@@ -8,8 +8,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import LoadingSpinners from "./ui/LoadingSpinners";
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import UpgradeIcon from "@mui/icons-material/Upgrade";
+import { Link } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }: any) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -47,28 +49,33 @@ const AdminProductList = ({
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-          <StyledTableCell> Product ID</StyledTableCell>
-           <StyledTableCell>Image</StyledTableCell>
+            <StyledTableCell>Product ID</StyledTableCell>
+            <StyledTableCell>Image</StyledTableCell>
             <StyledTableCell>Name</StyledTableCell>
             <StyledTableCell align="center">Price</StyledTableCell>
-            <StyledTableCell align="right">-</StyledTableCell>
+            <StyledTableCell align="center">Delete Product</StyledTableCell>
+            <StyledTableCell align="center">Update Product</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data?.map((row: any) => (
             <StyledTableRow key={row.id}>
-               <StyledTableCell align="center">{row.id}</StyledTableCell>
+              <StyledTableCell align="center">{row.id}</StyledTableCell>
               <StyledTableCell component="th" scope="row">
-               
                 {row.title}
               </StyledTableCell>
-              <StyledTableCell align="center"> <img
+              <StyledTableCell align="left">
+                <img
                   src={row.image}
                   style={{ width: "80px", height: "80px" }}
-                /></StyledTableCell>
+                />
+              </StyledTableCell>
               <StyledTableCell align="center">{row.price}</StyledTableCell>
               <StyledTableCell align="center">
-              <Button variant="contained" startIcon={<DeleteIcon />}
+                <Button
+                  variant="contained"
+                  color="error"
+                  startIcon={<DeleteIcon />}
                   onClick={() => remove(row.id)}
                   disabled={isLoadingDeletedElement ? true : false}
                 >
@@ -76,6 +83,22 @@ const AdminProductList = ({
                     <LoadingSpinners three_dots />
                   ) : (
                     "Delete"
+                  )}
+                </Button>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <Button
+                  variant="contained"
+                  color="success"
+                  startIcon={<UpgradeIcon />}
+                  component={Link}
+                  to={`/update-product/${row.id}`}
+                  disabled={isLoadingDeletedElement ? true : false}
+                >
+                  {isLoadingDeletedElement ? (
+                    <LoadingSpinners three_dots />
+                  ) : (
+                    "Update"
                   )}
                 </Button>
               </StyledTableCell>
