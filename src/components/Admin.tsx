@@ -148,12 +148,12 @@ const Admin = () => {
         isLoadingDeletedElement={isLoadingDeletedElement}
       />
       <h1>Add new vacation</h1>
-      {/* <CreateUpdateProduct
+      <CreateUpdateProduct
         handleSubmit={handleSubmit}
         titleRef={titleRef}
         priceRef={priceRef}
         imageRef={imageRef}
-      /> */}
+      />
     </>
   );
 };
