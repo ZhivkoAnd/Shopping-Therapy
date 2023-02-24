@@ -92,7 +92,7 @@ const AdminProductList = ({
                   color="success"
                   startIcon={<UpgradeIcon />}
                   component={Link}
-                  to={`/update-product/${row.id}`}
+                  to={`/createupdateproduct/${row.id}`}
                   disabled={isLoadingDeletedElement ? true : false}
                 >
                   {isLoadingDeletedElement ? (

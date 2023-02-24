@@ -16,7 +16,9 @@ const Shop = lazy(() => import("./components/Shop"));
 const Vacations = lazy(() => import("./components/Vacations"));
 const Login = lazy(() => import("./components/ui/LoginPanel"));
 const Register = lazy(() => import("./components/ui/RegisterPanel"));
-
+const CreateUpdateProduct = lazy(
+  () => import("./components/CreateUpdateProduct")
+);
 function App() {
   const [colorMode, setColorMode] = useState("dark");
 
@@ -35,10 +37,14 @@ function App() {
           <Layout lightMode={lightMode} darkMode={darkMode}>
             <Routes>
               <Route path="/" element={<Admin />} />
-              <Route path="shop" element={<Shop />} />
-              <Route path="vacations" element={<Vacations />} />
-              <Route path="login" element={<Login />} />
-              <Route path="register" element={<Register />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route
+                path="/createUpdateproduct/:id"
+                element={<CreateUpdateProduct />}
+              />
+              <Route path="/vacations" element={<Vacations />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
             </Routes>
           </Layout>
         </Suspense>

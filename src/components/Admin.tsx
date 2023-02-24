@@ -10,6 +10,8 @@ import LoadingSpinners from "./ui/LoadingSpinners";
 import ErrorUI from "./ui/ErrorUI";
 import ActionBar from "./ui/ActionBar";
 import AdminProductList from "./AdminProductList";
+import CreateUpdateProduct from "../components/CreateUpdateProduct";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
   const [inputQuery, setInputQuery] = useState("");
@@ -139,27 +141,19 @@ const Admin = () => {
         setFilterTitleDescending={setFilterTitleDescending}
         isAdminPage
       />
+      <Link to={"/"} />
       <AdminProductList
         data={filterss}
         remove={remove}
         isLoadingDeletedElement={isLoadingDeletedElement}
       />
       <h1>Add new vacation</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Title</label>
-          <input ref={titleRef} className="form-control"></input>
-        </div>
-        <div className="form-group">
-          <label>Price</label>
-          <input ref={priceRef} type="number" className="form-control"></input>
-        </div>
-        <div className="form-group">
-          <label>Image</label>
-          <input ref={imageRef} className="form-control"></input>
-        </div>
-        <button type="submit">Add vacation</button>
-      </form>
+      {/* <CreateUpdateProduct
+        handleSubmit={handleSubmit}
+        titleRef={titleRef}
+        priceRef={priceRef}
+        imageRef={imageRef}
+      /> */}
     </>
   );
 };
