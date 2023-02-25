@@ -49,9 +49,9 @@ const AdminProductList = ({
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Product ID</StyledTableCell>
-            <StyledTableCell>Image</StyledTableCell>
-            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell align="center">Product ID</StyledTableCell>
+            <StyledTableCell>Product</StyledTableCell>
+            <StyledTableCell align="left">Image</StyledTableCell>
             <StyledTableCell align="center">Price</StyledTableCell>
             <StyledTableCell align="center">Delete Product</StyledTableCell>
             <StyledTableCell align="center">Update Product</StyledTableCell>
