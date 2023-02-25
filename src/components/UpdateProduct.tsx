@@ -53,7 +53,7 @@ const CreateUpdateProduct = () => {
           <input
             ref={titleRef}
             className="form-control"
-            value={data.title}
+            defaultValue={data.title}
           ></input>
         </div>
         <div className="form-group">
@@ -62,7 +62,7 @@ const CreateUpdateProduct = () => {
             ref={priceRef}
             type="number"
             className="form-control"
-            value={data.price}
+            defaultValue={data.price}
           ></input>
         </div>
         <div className="form-group">
@@ -70,7 +70,7 @@ const CreateUpdateProduct = () => {
           <input
             ref={imageRef}
             className="form-control"
-            value={data.image}
+            defaultValue={data.image}
           ></input>
         </div>
         <button type="submit">Add vacation</button>
