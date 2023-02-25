@@ -11,19 +11,11 @@ import ErrorUI from "./ui/ErrorUI";
 import ActionBar from "./ui/ActionBar";
 import AdminProductList from "./AdminProductList";
 import CreateProductModal from "./ui/CreateProductModal";
-import { Link } from "react-router-dom";
 import { deleteData } from "../utils/API";
-import { createData } from "../utils/API";
 import { fetchBookingQuery } from "../utils/API";
-import Button from "@mui/material/Button";
-import UpgradeIcon from "@mui/icons-material/Upgrade";
 
 const Admin = () => {
   const [inputQuery, setInputQuery] = useState("");
-
-  const titleRef: any = useRef("");
-  const priceRef: any = useRef("");
-  const imageRef: any = useRef("");
 
   const queryClient = useQueryClient();
 
@@ -45,21 +37,6 @@ const Admin = () => {
   };
 
   const [filterss, setFilters] = useState(data);
-
-  const { mutateAsync: createMutate } = useMutation(createData, {
-    onSuccess: (data) => {
-      queryClient.invalidateQueries(["shop"]);
-    },
-  });
-
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    createMutate({
-      title: titleRef.current.value,
-      price: priceRef.current.value,
-      image: imageRef.current.value,
-    });
-  };
 
   const inputData = data?.filter((city: any) =>
     city.title.toLowerCase().includes(inputQuery.toLowerCase())
@@ -116,22 +93,7 @@ const Admin = () => {
         setFilterTitleDescending={setFilterTitleDescending}
         isAdminPage
       />
-      {/* <Button
-        variant="contained"
-        color="success"
-        startIcon={<UpgradeIcon />}
-        component={Link}
-        to={`/createupdateproduct/${row.id}`}
-        disabled={isLoadingDeletedElement ? true : false}
-      >
-        {isLoadingDeletedElement ? <LoadingSpinners three_dots /> : "Update"}
-      </Button> */}
-      <CreateProductModal
-        handleSubmit={handleSubmit}
-        titleRef={titleRef}
-        priceRef={priceRef}
-        imageRef={imageRef}
-      />
+      <CreateProductModal />
       <AdminProductList
         data={filterss}
         remove={remove}
