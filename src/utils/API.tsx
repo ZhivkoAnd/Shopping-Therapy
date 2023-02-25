@@ -45,7 +45,7 @@ export const createData = async (data: {}) => {
 
 // Update Data
 
-export const updateData = async (data: any, id: any) => {
+export const updateData = async ({ id, ...data }: any) => {
   const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities/${id}`, {
     method: "PUT",
     headers: {
