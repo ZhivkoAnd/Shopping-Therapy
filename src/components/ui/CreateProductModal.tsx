@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
-import UpgradeIcon from "@mui/icons-material/Upgrade";
 import AddIcon from "@mui/icons-material/Add";
 
 const style = {

@@ -77,7 +77,7 @@ const AdminProductList = ({
                   color="info"
                   startIcon={<UpgradeIcon />}
                   component={Link}
-                  to={`/createupdateproduct/${row.id}`}
+                  to={`/update-product/${row.id}`}
                   disabled={isLoadingDeletedElement ? true : false}
                 >
                   {isLoadingDeletedElement ? (

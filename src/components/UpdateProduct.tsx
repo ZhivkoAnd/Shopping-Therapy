@@ -3,6 +3,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProduct } from "../utils/API";
 import ProductItem from "./ui/ProductItem";
+import { updateData } from "../utils/API";
 
 const CreateUpdateProduct = ({
   handleSubmit,
@@ -18,7 +19,7 @@ const CreateUpdateProduct = ({
     getProduct
   );
 
-  // const { mutateAsync, isLoading: isMutating } = useMutation(updateData);
+  const handleUpdate = async () => {};
 
   if (isLoading) {
     return <div>Loading update :</div>;
@@ -30,7 +31,7 @@ const CreateUpdateProduct = ({
   return (
     <>
       <ProductItem data={data} />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleUpdate}>
         <div className="form-group">
           <label>Title</label>
           <input ref={titleRef} className="form-control"></input>

@@ -46,16 +46,13 @@ export const createData = async (data: {}) => {
 // Update Data
 
 export const updateData = async (data: any, id: any) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_API_SERVER}/books/${id}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  );
+  const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
   return response.json();
 };
 
