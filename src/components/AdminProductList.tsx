@@ -53,8 +53,8 @@ const AdminProductList = ({
             <StyledTableCell>Product</StyledTableCell>
             <StyledTableCell align="left">Image</StyledTableCell>
             <StyledTableCell align="center">Price</StyledTableCell>
-            <StyledTableCell align="center">Delete Product</StyledTableCell>
             <StyledTableCell align="center">Update Product</StyledTableCell>
+            <StyledTableCell align="center">Delete Product</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -74,21 +74,6 @@ const AdminProductList = ({
               <StyledTableCell align="center">
                 <Button
                   variant="contained"
-                  color="error"
-                  startIcon={<DeleteIcon />}
-                  onClick={() => remove(row.id)}
-                  disabled={isLoadingDeletedElement ? true : false}
-                >
-                  {isLoadingDeletedElement ? (
-                    <LoadingSpinners three_dots />
-                  ) : (
-                    "Delete"
-                  )}
-                </Button>
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                <Button
-                  variant="contained"
                   color="success"
                   startIcon={<UpgradeIcon />}
                   component={Link}
@@ -99,6 +84,21 @@ const AdminProductList = ({
                     <LoadingSpinners three_dots />
                   ) : (
                     "Update"
+                  )}
+                </Button>
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <Button
+                  variant="contained"
+                  color="error"
+                  startIcon={<DeleteIcon />}
+                  onClick={() => remove(row.id)}
+                  disabled={isLoadingDeletedElement ? true : false}
+                >
+                  {isLoadingDeletedElement ? (
+                    <LoadingSpinners three_dots />
+                  ) : (
+                    "Delete"
                   )}
                 </Button>
               </StyledTableCell>
