@@ -13,7 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { Link } from "react-router-dom";
 
-const StyledTableCell = styled(TableCell)(({ theme }: any) => ({
+const StyledTableCell: any = styled(TableCell)(({ theme }: any) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
@@ -74,7 +74,7 @@ const AdminProductList = ({
               <StyledTableCell align="center">
                 <Button
                   variant="contained"
-                  color="success"
+                  color="info"
                   startIcon={<UpgradeIcon />}
                   component={Link}
                   to={`/createupdateproduct/${row.id}`}

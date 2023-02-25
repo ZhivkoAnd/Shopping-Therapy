@@ -118,6 +118,12 @@ h2 {
   margin-bottom: 2rem;
 }
 
+.create-product-modal-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
 @media (max-width: 768px) {
   .page-content {
     padding-top: 1.5rem;

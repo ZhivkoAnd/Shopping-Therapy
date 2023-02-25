@@ -10,7 +10,7 @@ import LoadingSpinners from "./ui/LoadingSpinners";
 import ErrorUI from "./ui/ErrorUI";
 import ActionBar from "./ui/ActionBar";
 import AdminProductList from "./AdminProductList";
-import CreateUpdateProduct from "../components/CreateUpdateProduct";
+import CreateProductModal from "./ui/CreateProductModal";
 import { Link } from "react-router-dom";
 import { deleteData } from "../utils/API";
 import { createData } from "../utils/API";
@@ -126,17 +126,16 @@ const Admin = () => {
       >
         {isLoadingDeletedElement ? <LoadingSpinners three_dots /> : "Update"}
       </Button> */}
-      <AdminProductList
-        data={filterss}
-        remove={remove}
-        isLoadingDeletedElement={isLoadingDeletedElement}
-      />
-      <h1>Add new vacation</h1>
-      <CreateUpdateProduct
+      <CreateProductModal
         handleSubmit={handleSubmit}
         titleRef={titleRef}
         priceRef={priceRef}
         imageRef={imageRef}
+      />
+      <AdminProductList
+        data={filterss}
+        remove={remove}
+        isLoadingDeletedElement={isLoadingDeletedElement}
       />
     </>
   );
