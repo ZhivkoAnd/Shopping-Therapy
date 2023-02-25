@@ -15,6 +15,8 @@ import { Link } from "react-router-dom";
 import { deleteData } from "../utils/API";
 import { createData } from "../utils/API";
 import { fetchBookingQuery } from "../utils/API";
+import Button from "@mui/material/Button";
+import UpgradeIcon from "@mui/icons-material/Upgrade";
 
 const Admin = () => {
   const [inputQuery, setInputQuery] = useState("");
@@ -114,7 +116,16 @@ const Admin = () => {
         setFilterTitleDescending={setFilterTitleDescending}
         isAdminPage
       />
-      <Link to={"/"} />
+      {/* <Button
+        variant="contained"
+        color="success"
+        startIcon={<UpgradeIcon />}
+        component={Link}
+        to={`/createupdateproduct/${row.id}`}
+        disabled={isLoadingDeletedElement ? true : false}
+      >
+        {isLoadingDeletedElement ? <LoadingSpinners three_dots /> : "Update"}
+      </Button> */}
       <AdminProductList
         data={filterss}
         remove={remove}
