@@ -38,13 +38,14 @@ export default function TransitionsModal() {
     },
   });
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     createMutate({
       title: titleRef.current.value,
       price: priceRef.current.value,
       image: imageRef.current.value,
     });
+    handleClose();
   };
 
   return (
@@ -75,7 +76,7 @@ export default function TransitionsModal() {
         <Fade in={open}>
           <Box sx={style}>
             <Button onClick={handleClose}>X</Button>
-            <form onSubmit={handleSubmit}>
+            <form>
               <div className="form-group">
                 <label>Title</label>
                 <input ref={titleRef} className="form-control"></input>
@@ -92,7 +93,7 @@ export default function TransitionsModal() {
                 <label>Image</label>
                 <input ref={imageRef} className="form-control"></input>
               </div>
-              <button type="submit" onClick={handleClose}>
+              <button type="submit" onClick={handleSubmit}>
                 Add vacation
               </button>
             </form>
