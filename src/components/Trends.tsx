@@ -7,8 +7,6 @@ const Trends = () => {
 
   const [shown, setShown] = useState("");
 
-  console.log(data);
-
   const click = (id: any) => {
     setShown(id);
   };
