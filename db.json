@@ -18,5 +18,40 @@
       "price": 50,
       "image": "https://static01.nyt.com/images/2018/11/18/travel/18Hours-Bucharest1/18Hours-Bucharest1-articleLarge-v3.jpg?quality=75&auto=webp&disable=upscale"
     }
+  ],
+  "fruits": [
+    {
+      "id": 1,
+      "title": "Banana",
+      "price_1": 100,
+      "price_2": 200,
+      "price_3": 300,
+      "price_4": 400,
+      "price_5": 500,
+      "price_6": 600,
+      "price_7": 700
+    },
+    {
+      "id": 2,
+      "title": "Orange",
+      "price_1": 100,
+      "price_2": 200,
+      "price_3": 300,
+      "price_4": 400,
+      "price_5": 500,
+      "price_6": 600,
+      "price_7": 700
+    },
+    {
+      "id": 3,
+      "title": "Kiwi",
+      "price_1": 100,
+      "price_2": 200,
+      "price_3": 300,
+      "price_4": 400,
+      "price_5": 500,
+      "price_6": 600,
+      "price_7": 700
+    }
   ]
 }

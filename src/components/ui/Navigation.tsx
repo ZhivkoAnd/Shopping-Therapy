@@ -32,6 +32,11 @@ const pages = [
     label: "Vacations",
     link: "/vacations",
   },
+  {
+    id: 4,
+    label: "Trends",
+    link: "/trends",
+  },
 ];
 
 interface Props {
