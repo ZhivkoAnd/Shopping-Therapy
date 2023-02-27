@@ -71,3 +71,11 @@ export const fetchBookingQuery = async () => {
   const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`);
   return response.json();
 };
+
+// Get all Fruits
+
+export const fetchFruitsQuery = async () => {
+  // We receive the response from the server
+  const response = await fetch(`${import.meta.env.VITE_API_KEY}/fruits`);
+  return response.json();
+};
