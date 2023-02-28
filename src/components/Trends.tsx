@@ -1,27 +1,39 @@
-import React, { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { fetchFruitsQuery } from "../utils/API";
+import React, { useEffect, useState } from "react";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
 
 const Trends = () => {
-  const { data, isLoading, isError } = useQuery(["fruits"], fetchFruitsQuery);
 
-  const [shown, setShown] = useState("");
 
-  const click = (id: any) => {
-    setShown(id);
-  };
+  const queryClient = useQueryClient();
 
-  console.log(shown);
+// Get all Fruits
+
+const categories = ["ditto", "bulbasaur", "venusaur", "charmander"];
+
+const fetchFruitsQuery = async (pokemon: any) => {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+  return response.json();
+};
+
+const [pokemon, setPokemon] = useState<any>("")
+
+  const { data, isLoading, isError } = useQuery(["pokemons", pokemon ], ()=> fetchFruitsQuery(pokemon));
+
+  console.log(data)
+
+ if (isLoading ) {
+  return <div>Loading...</div>
+ }
+
+ console.log(pokemon)
 
   return (
     <>
+     {pokemon}
       <div>
-        {data?.filter((e: any) => e.id === shown).map((e: any) => e.title)}
-      </div>
-      <div>
-        {data?.map((e: any) => (
-          <button onClick={() => click(e.id)}>{e.title}</button>
-        ))}
+        {categories.map((e)=> <button onClick={() =>setPokemon(e)}>{e}</button>)}
+        {!pokemon && data?.results?.map((e:any ) => e.name)}
+       
       </div>
     </>
   );
