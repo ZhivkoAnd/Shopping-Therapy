@@ -15,20 +15,30 @@ const Trends = () => {
   const [date, setDate] = useState<any>("2023-02-27");
 
   const { data, isLoading, isError } = useQuery(
-    ["pokemons", date, currency],
+    ["currencies", date, currency],
     () => fetchFruitsQuery(date, date),
     {
       refetchOnWindowFocus: false,
     }
   );
 
-  console.log(data);
+  const list = [];
+
+  if (data) {
+    for (const [key, value] of Object.entries(data.rates)) {
+      list.push(
+        <button key={key}>
+          <>{key}</>: <>{value}</>
+        </button>
+      );
+    }
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  return <></>;
+  return <div className="container">{list}</div>;
 };
 
 export default Trends;
