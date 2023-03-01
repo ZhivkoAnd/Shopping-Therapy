@@ -4,18 +4,23 @@ import { useQueryClient, useQuery } from "@tanstack/react-query";
 const Trends = () => {
   const queryClient = useQueryClient();
 
-  // Get all Fruits
+  //       `https://api.currencyapi.com/v3/historical?apikey=cQzoqbcrYtVvquShOKnJXnN4ND2H3EoN86os9IQg&currencies=EUR&date=2023-02-27`
+  //      `https://api.currencyapi.com/v3/historical?apikey=cQzoqbcrYtVvquShOKnJXnN4ND2H3EoN86os9IQg&currencies=${currency}&date=${date}`
 
-  //localhost:4000/products?category=Veggies&_sort=price
-
-  const fetchFruitsQuery = async () => {
+  const fetchFruitsQuery = async (currency: any, date: any) => {
     const response = await fetch(
-      `https://openexchangerates.org/api/historical/2010-10-10.json?app_id=2739d7cc6d4540d0a89b9efa791dab59`
+      `https://api.currencyapi.com/v3/historical?apikey=cQzoqbcrYtVvquShOKnJXnN4ND2H3EoN86os9IQg&currencies=EUR,BGN&date=2023-02-27`
     );
     return response.json();
   };
 
-  const { data, isLoading, isError } = useQuery(["pokemons"], fetchFruitsQuery);
+  const [currency, setCurrency] = useState<any>("CAD");
+  const [date, setDate] = useState<any>("2023-02-27");
+
+  const { data, isLoading, isError } = useQuery(
+    ["pokemons", currency, date],
+    () => fetchFruitsQuery(currency, date)
+  );
 
   console.log(data);
 
