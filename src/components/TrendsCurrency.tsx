@@ -12,7 +12,7 @@ const Trends = () => {
   };
 
   const [currency, setCurrency] = useState<any>("CAD");
-  const [date, setDate] = useState<any>("2023-02-27");
+  const [date, setDate] = useState<any>("latest");
 
   const { data, isLoading, isError } = useQuery(
     ["currencies", date, currency],
@@ -22,13 +22,17 @@ const Trends = () => {
     }
   );
 
+  const clicked = (key: string) => {
+    setCurrency(key);
+  };
+
   const list = [];
 
   if (data) {
     for (const [key, value] of Object.entries(data.rates)) {
       list.push(
-        <button key={key}>
-          <>{key}</>: <>{value}</>
+        <button key={key} onClick={() => clicked(key)}>
+          <>{key}</>:<>{value}</>
         </button>
       );
     }
@@ -38,7 +42,12 @@ const Trends = () => {
     return <div>Loading...</div>;
   }
 
-  return <div className="container">{list}</div>;
+  return (
+    <>
+      <div className="container">{list}</div>
+      {currency && <div>{currency}</div>}
+    </>
+  );
 };
 
 export default Trends;
