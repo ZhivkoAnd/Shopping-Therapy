@@ -19,42 +19,18 @@
       "image": "https://static01.nyt.com/images/2018/11/18/travel/18Hours-Bucharest1/18Hours-Bucharest1-articleLarge-v3.jpg?quality=75&auto=webp&disable=upscale"
     }
   ],
-  "products": [
-    {
-      "id": 1,
-      "name": "banana",
-      "category": "fruits",
-      "price": 300
-    },
-    {
-      "id": 2,
-      "name": "Orange",
-      "category": "fruits",
-      "price": 100
-    },
-    {
-      "id": 3,
-      "name": "Kiwi",
-      "category": "fruits",
-      "price": 200
-    },
-    {
-      "id": 4,
-      "name": "Tomato",
-      "category": "Veggies",
-      "price": 300
-    },
-    {
-      "id": 5,
-      "name": "Cucumber",
-      "category": "Veggies",
-      "price": 100
-    },
-    {
-      "id": 6,
-      "name": "Pepper",
-      "category": "Veggies",
-      "price": 200
+  "data": {
+    "exchange_rates": {
+      "28.02.2023": {
+        "CAD": 1.357652,
+        "EUR": 0.942552,
+        "USD": 1
+      },
+      "29.02.2023": {
+        "CAD": 1.357651,
+        "EUR": 0.94251,
+        "USD": 1
+      }
     }
-  ]
+  }
 }
