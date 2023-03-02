@@ -15,10 +15,10 @@ const Trends = () => {
     fourDaysAgo: any,
     fiveDaysAgo: any,
     sixDaysAgo: any,
-
     currency: any
   ) => {
     return Promise.all([
+      fetch(`https://api.exchangerate.host/latest`).then((res) => res.json()),
       fetch(`https://api.exchangerate.host/${today}?symbols=${currency}`).then(
         (res) => res.json()
       ),
@@ -44,7 +44,6 @@ const Trends = () => {
   };
 
   const [currency, setCurrency] = useState<any>("CAD");
-  const [date, setDate] = useState<any>("latest");
 
   const today = new Date();
   const yesterday = subDays(today, 1);
@@ -90,7 +89,6 @@ const Trends = () => {
 
   const clicked = (key: string) => {
     setCurrency(key);
-    setDate(formatDate(today));
   };
 
   // Promise.allSettled()
