@@ -48,7 +48,7 @@ const Trends = () => {
     ["currencies", date, currency],
     () =>
       fetchFruitsQuery(
-        date,
+        today,
         yesterday,
         twoDaysAgo,
         threeDaysAgo,
