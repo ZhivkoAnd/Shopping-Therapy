@@ -9,6 +9,7 @@ const Trends = () => {
 
   const fetchFruitsQuery = async (
     today: any,
+    yesterday: any,
     twoDaysAgo: any,
     threeDaysAgo: any,
     fourDaysAgo: any,
@@ -54,7 +55,8 @@ const Trends = () => {
         threeDaysAgo,
         fourDaysAgo,
         fiveDaysAgo,
-        sixDaysAgo
+        sixDaysAgo,
+        currency
       ),
     {
       refetchOnWindowFocus: false,
