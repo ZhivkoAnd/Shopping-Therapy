@@ -114,48 +114,42 @@ const Trends = () => {
   }
 
   return (
-    // <>
-    // <div className="container">{list}</div>
-    // {currency && <div>{currency}</div>}
-    // {currency ? (
-    // <div>
-    // <Line
-    // data={{
-    // labels: [
-    // formatDate(sixDaysAgo),
-    // formatDate(fiveDaysAgo),
-    // formatDate(fourDaysAgo),
-    // formatDate(threeDaysAgo),
-    // formatDate(twoDaysAgo),
-    // formatDate(yesterday),
-    // formatDate(today),
-    // ],
-    // datasets: [
-    // {
-    // label: "Day Rate",
-    // data: [
-    // "1","2","3","4","5","6","7",
-    // ],
-    // backgroundColor: "transparent",
-    // borderColor: "#b30000",
-    // borderWidth: 1,
-    // },
-    // ],
-    // }}
-    // height={200}
-    // width={200}
-    // options={{ maintainAspectRatio: false }}
-    // ></Line>
-    // <div className="buttons">
-    // {/ <button className="min">MINIMUM {minValue} </button>
-    // <button className="max">MAXIMUM {maxValue}</button> /}
-    // </div>
-    // </div>
-    // ) : (
-    // ""
-    // )}
-    // </>
-    <></>
+    <>
+      <div className="container"></div>
+      {currency && <div>{currency}</div>}
+      {currency ? (
+        <div>
+          <Line
+            data={{
+              labels: [
+                formatDate(sixDaysAgo),
+                formatDate(fiveDaysAgo),
+                formatDate(fourDaysAgo),
+                formatDate(threeDaysAgo),
+                formatDate(twoDaysAgo),
+                formatDate(yesterday),
+                formatDate(today),
+              ],
+              datasets: [
+                {
+                  label: "Day Rate",
+                  data: ["1", "2", "3", "4", "5", "6", "7"],
+                  backgroundColor: "transparent",
+                  borderColor: "#b30000",
+                  borderWidth: 1,
+                },
+              ],
+            }}
+            height={200}
+            width={200}
+            options={{ maintainAspectRatio: false }}
+          ></Line>
+          <div className="buttons"></div>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 
