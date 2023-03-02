@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { subDays, format } from "date-fns";
 import { Line } from "react-chartjs-2";
@@ -18,7 +18,7 @@ const Trends = () => {
     currency: any
   ) => {
     return Promise.all([
-      fetch(`https://api.exchangerate.host/latest`).then((res) => res.json()),
+      // fetch(`https://api.exchangerate.host/latest`).then((res) => res.json()),
       fetch(`https://api.exchangerate.host/${today}?symbols=${currency}`).then(
         (res) => res.json()
       ),
@@ -87,20 +87,18 @@ const Trends = () => {
 
   // Improve this
 
-  const clicked = (key: string) => {
-    setCurrency(key);
-  };
-
   // Promise.allSettled()
 
   console.log(data);
+
+  const rates: any = data?.map((e: any) => e.rates[currency]);
 
   const list = [];
 
   if (data) {
     for (const [key, value] of Object.entries(data[0].rates)) {
       list.push(
-        <button key={key} onClick={() => clicked(key)}>
+        <button key={key} onClick={() => setCurrency(key)}>
           <>{key}</>:<>{value}</>
         </button>
       );
@@ -131,7 +129,7 @@ const Trends = () => {
               datasets: [
                 {
                   label: "Day Rate",
-                  data: ["1", "2", "3", "4", "5", "6", "7"],
+                  data: [...rates],
                   backgroundColor: "transparent",
                   borderColor: "#b30000",
                   borderWidth: 1,
