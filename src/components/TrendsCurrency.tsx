@@ -99,15 +99,15 @@ const Trends = () => {
 
   const list = [];
 
-  // if (data) {
-  // for (const [key, value] of Object.entries(data.rates)) {
-  // list.push(
-  // <button key={key} onClick={() => clicked(key)}>
-  // <>{key}</>:<>{value}</>
-  // </button>
-  // );
-  // }
-  // }
+  if (data) {
+    for (const [key, value] of Object.entries(data[0].rates)) {
+      list.push(
+        <button key={key} onClick={() => clicked(key)}>
+          <>{key}</>:<>{value}</>
+        </button>
+      );
+    }
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -115,7 +115,7 @@ const Trends = () => {
 
   return (
     <>
-      <div className="container"></div>
+      <div className="container">{list}</div>
       {currency && <div>{currency}</div>}
       {currency ? (
         <div>
