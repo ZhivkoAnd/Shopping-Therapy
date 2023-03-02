@@ -7,14 +7,37 @@ import "chart.js/auto";
 const Trends = () => {
   const queryClient = useQueryClient();
 
-  const fetchFruitsQuery = async (date: any, currency: any) => {
+  const fetchFruitsQuery = async (
+    today: any,
+    twoDaysAgo: any,
+    threeDaysAgo: any,
+    fourDaysAgo: any,
+    fiveDaysAgo: any,
+    sixDaysAgo: any,
+    currency: any
+  ) => {
     return Promise.all([
-      fetch(`https://api.exchangerate.host/${date}?symbols=${currency}`).then(
+      fetch(`https://api.exchangerate.host/${today}?symbols=${currency}`).then(
         (res) => res.json()
       ),
-      fetch(`https://api.exchangerate.host/${date}?symbols=${currency}`),
-      fetch(`https://api.exchangerate.host/${date}?symbols=${currency}`),
-      fetch(`https://api.exchangerate.host/${date}?symbols=${currency}`),
+      fetch(
+        `https://api.exchangerate.host/${yesterday}?symbols=${currency}`
+      ).then((res) => res.json()),
+      fetch(
+        `https://api.exchangerate.host/${twoDaysAgo}?symbols=${currency}`
+      ).then((res) => res.json()),
+      fetch(
+        `https://api.exchangerate.host/${threeDaysAgo}?symbols=${currency}`
+      ).then((res) => res.json()),
+      fetch(
+        `https://api.exchangerate.host/${fourDaysAgo}?symbols=${currency}`
+      ).then((res) => res.json()),
+      fetch(
+        `https://api.exchangerate.host/${fiveDaysAgo}?symbols=${currency}`
+      ).then((res) => res.json()),
+      fetch(
+        `https://api.exchangerate.host/${sixDaysAgo}?symbols=${currency}`
+      ).then((res) => res.json()),
     ]);
   };
 
@@ -23,7 +46,16 @@ const Trends = () => {
 
   const { data, isLoading, isError } = useQuery(
     ["currencies", date, currency],
-    () => fetchFruitsQuery(date, date),
+    () =>
+      fetchFruitsQuery(
+        date,
+        yesterday,
+        twoDaysAgo,
+        threeDaysAgo,
+        fourDaysAgo,
+        fiveDaysAgo,
+        sixDaysAgo
+      ),
     {
       refetchOnWindowFocus: false,
     }
