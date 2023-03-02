@@ -15,6 +15,7 @@ const Trends = () => {
     fourDaysAgo: any,
     fiveDaysAgo: any,
     sixDaysAgo: any,
+
     currency: any
   ) => {
     return Promise.all([
@@ -43,27 +44,8 @@ const Trends = () => {
   };
 
   const [currency, setCurrency] = useState<any>("CAD");
-  const [date, setDate] = useState<any>("latest");
+  const [date, setDate] = useState<any>("2023-03-02");
 
-  const { data, isLoading, isError } = useQuery(
-    ["currencies", date, currency],
-    () =>
-      fetchFruitsQuery(
-        today,
-        yesterday,
-        twoDaysAgo,
-        threeDaysAgo,
-        fourDaysAgo,
-        fiveDaysAgo,
-        sixDaysAgo,
-        currency
-      ),
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
-
-  // Improve this
   const today = new Date();
   const yesterday = subDays(today, 1);
   const twoDaysAgo = subDays(today, 2);
@@ -76,6 +58,36 @@ const Trends = () => {
     return format(date, "yyyy-MM-dd");
   };
 
+  const { data, isLoading, isError } = useQuery(
+    [
+      "currencies",
+      formatDate(today),
+      formatDate(yesterday),
+      formatDate(twoDaysAgo),
+      formatDate(threeDaysAgo),
+      formatDate(fourDaysAgo),
+      formatDate(fiveDaysAgo),
+      formatDate(sixDaysAgo),
+      currency,
+    ],
+    () =>
+      fetchFruitsQuery(
+        formatDate(today),
+        formatDate(yesterday),
+        formatDate(twoDaysAgo),
+        formatDate(threeDaysAgo),
+        formatDate(fourDaysAgo),
+        formatDate(fiveDaysAgo),
+        formatDate(sixDaysAgo),
+        currency
+      ),
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  // Improve this
+
   const clicked = (key: string) => {
     setCurrency(key);
     setDate(formatDate(today));
@@ -83,7 +95,7 @@ const Trends = () => {
 
   // Promise.allSettled()
 
-  console.log(date);
+  console.log(data);
 
   const list = [];
 
@@ -143,9 +155,7 @@ const Trends = () => {
     // ""
     // )}
     // </>
-    <>
-      <button onClick={() => setDate(formatDate(yesterday))}>here</button>
-    </>
+    <></>
   );
 };
 
