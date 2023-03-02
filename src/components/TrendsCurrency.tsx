@@ -63,11 +63,8 @@ const Trends = () => {
     }
   );
 
-  console.log(data);
-  const today = new Date();
-
   // Improve this
-
+  const today = new Date();
   const yesterday = subDays(today, 1);
   const twoDaysAgo = subDays(today, 2);
   const threeDaysAgo = subDays(today, 3);
@@ -86,9 +83,9 @@ const Trends = () => {
 
   // Promise.allSettled()
 
-  // console.log(date)
+  console.log(date);
 
-  // const list = [];
+  const list = [];
 
   // if (data) {
   // for (const [key, value] of Object.entries(data.rates)) {
@@ -146,7 +143,9 @@ const Trends = () => {
     // ""
     // )}
     // </>
-    <></>
+    <>
+      <button onClick={() => setDate(formatDate(yesterday))}>here</button>
+    </>
   );
 };
 
