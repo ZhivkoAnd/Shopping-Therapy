@@ -79,25 +79,21 @@ const Trends = () => {
         currency
       ),
     {
-      refetchOnWindowFocus: false,
+      keepPreviousData: true,
     }
   );
-
-  // Improve this
-
   // Promise.allSettled()
-
-  console.log(data);
 
   const rates: any = data?.slice(1).map((e: any) => e.rates[currency]);
 
   const list = [];
 
+  //    <>{key}</>:<>{value}</>
   if (data) {
     for (const [key, value] of Object.entries(data[0].rates)) {
       list.push(
         <button key={key} onClick={() => setCurrency(key)}>
-          <>{key}</>:<>{value}</>
+          <>{key}</>
         </button>
       );
     }
