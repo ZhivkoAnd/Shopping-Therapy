@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useQueryClient, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { subDays, format } from "date-fns";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 
 const Trends = () => {
-  const queryClient = useQueryClient();
-
   const fetchFruitsQuery = async (
     today: any,
     yesterday: any,
@@ -18,7 +16,7 @@ const Trends = () => {
     currency: any
   ) => {
     return Promise.all([
-      // fetch(`https://api.exchangerate.host/latest`).then((res) => res.json()),
+      fetch(`https://api.exchangerate.host/latest`).then((res) => res.json()),
       fetch(`https://api.exchangerate.host/${today}?symbols=${currency}`).then(
         (res) => res.json()
       ),
@@ -91,7 +89,7 @@ const Trends = () => {
 
   console.log(data);
 
-  const rates: any = data?.map((e: any) => e.rates[currency]);
+  const rates: any = data?.slice(1).map((e: any) => e.rates[currency]);
 
   const list = [];
 
