@@ -4,19 +4,6 @@ import { subDays, format } from "date-fns";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 
-// Get Last 7 days of the week and then make them the right format
-
-// Calculating the maximum and minimum value for each currency for the past week
-
-//   const maxArray = [date, date1, date2, date3, date4, date5, date6];
-//   const maxValue = Math.max(...maxArray);
-
-//   const minArray = [date, date1, date2, date3, date4, date5, date6];
-//   const minValue = Math.min(...minArray);
-
-// const maxValue = Math.max(...values);
-// const minValue = Math.min(...values);
-
 const Trends = () => {
   const fetchFruitsQuery = async (
     today: any,
@@ -155,6 +142,13 @@ const Trends = () => {
         </div>
       ) : (
         ""
+      )}
+
+      {rates.length > 0 && !isLoading && (
+        <>
+          <div>{Math.max(...rates)}</div>
+          <div>{Math.min(...rates)}</div>
+        </>
       )}
     </div>
   );
