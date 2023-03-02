@@ -1,0 +1,39 @@
+.trends {
+  text-align: center;
+  margin: 10px;
+
+  &__button {
+    margin: 2px;
+    background-color: #bfbfbf;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:focus {
+      background-color: #b30000;
+      color: white;
+      border: none;
+    }
+  }
+  &__list {
+    margin-bottom: 2rem;
+  }
+
+  &__selected-currency {
+    margin-bottom: 2rem;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  .min {
+    background-color: #b30000;
+    color: white;
+    font-weight: bold;
+  }
+
+  .max {
+    background-color: #006622;
+    color: white;
+    font-weight: bold;
+  }
+}

@@ -4,6 +4,19 @@ import { subDays, format } from "date-fns";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 
+// Get Last 7 days of the week and then make them the right format
+
+// Calculating the maximum and minimum value for each currency for the past week
+
+//   const maxArray = [date, date1, date2, date3, date4, date5, date6];
+//   const maxValue = Math.max(...maxArray);
+
+//   const minArray = [date, date1, date2, date3, date4, date5, date6];
+//   const minValue = Math.min(...minArray);
+
+// const maxValue = Math.max(...values);
+// const minValue = Math.min(...values);
+
 const Trends = () => {
   const fetchFruitsQuery = async (
     today: any,
@@ -92,7 +105,11 @@ const Trends = () => {
   if (data) {
     for (const [key, value] of Object.entries(data[0].rates)) {
       list.push(
-        <button key={key} onClick={() => setCurrency(key)}>
+        <button
+          className="trends__button"
+          key={key}
+          onClick={() => setCurrency(key)}
+        >
           <>{key}</>
         </button>
       );
@@ -104,9 +121,9 @@ const Trends = () => {
   }
 
   return (
-    <>
-      <div className="container">{list}</div>
-      {currency && <div>{currency}</div>}
+    <div className="trends">
+      <div className="trends__list">{list}</div>
+      {currency && <div className="trends__selected-currency">{currency}</div>}
       {currency ? (
         <div>
           <Line
@@ -139,7 +156,7 @@ const Trends = () => {
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 };
 

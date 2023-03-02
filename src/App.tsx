@@ -3,6 +3,7 @@ import { useState, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles/Global.scss";
+import "../styles/Trends.scss";
 import "../styles/Navigation.scss";
 import "../styles/VacationPanel.scss";
 import "../styles/ActionBar.scss";
