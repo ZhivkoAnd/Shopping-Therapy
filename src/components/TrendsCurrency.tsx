@@ -44,7 +44,7 @@ const Trends = () => {
   };
 
   const [currency, setCurrency] = useState<any>("CAD");
-  const [date, setDate] = useState<any>("2023-03-02");
+  const [date, setDate] = useState<any>("latest");
 
   const today = new Date();
   const yesterday = subDays(today, 1);
