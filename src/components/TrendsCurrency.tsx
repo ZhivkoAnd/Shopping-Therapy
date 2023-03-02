@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
+import { subDays, format } from "date-fns";
+import { Line } from "react-chartjs-2";
+import "chart.js/auto";
 
 const Trends = () => {
   const queryClient = useQueryClient();
 
   const fetchFruitsQuery = async (date: any, currency: any) => {
-    const response = await fetch(
-      `https://api.exchangerate.host/${date}?symbols=${currency}`
-    );
-    return response.json();
+    return Promise.all([
+      fetch(`https://api.exchangerate.host/${date}?symbols=${currency}`).then(
+        (res) => res.json()
+      ),
+      fetch(`https://api.exchangerate.host/${date}?symbols=${currency}`),
+      fetch(`https://api.exchangerate.host/${date}?symbols=${currency}`),
+      fetch(`https://api.exchangerate.host/${date}?symbols=${currency}`),
+    ]);
   };
 
   const [currency, setCurrency] = useState<any>("CAD");
@@ -22,31 +29,90 @@ const Trends = () => {
     }
   );
 
-  const clicked = (key: string) => {
-    setCurrency(key);
+  console.log(data);
+  const today = new Date();
+
+  // Improve this
+
+  const yesterday = subDays(today, 1);
+  const twoDaysAgo = subDays(today, 2);
+  const threeDaysAgo = subDays(today, 3);
+  const fourDaysAgo = subDays(today, 4);
+  const fiveDaysAgo = subDays(today, 5);
+  const sixDaysAgo = subDays(today, 6);
+
+  const formatDate = (date: any) => {
+    return format(date, "yyyy-MM-dd");
   };
 
-  const list = [];
+  const clicked = (key: string) => {
+    setCurrency(key);
+    setDate(formatDate(today));
+  };
 
-  if (data) {
-    for (const [key, value] of Object.entries(data.rates)) {
-      list.push(
-        <button key={key} onClick={() => clicked(key)}>
-          <>{key}</>:<>{value}</>
-        </button>
-      );
-    }
-  }
+  // Promise.allSettled()
+
+  // console.log(date)
+
+  // const list = [];
+
+  // if (data) {
+  // for (const [key, value] of Object.entries(data.rates)) {
+  // list.push(
+  // <button key={key} onClick={() => clicked(key)}>
+  // <>{key}</>:<>{value}</>
+  // </button>
+  // );
+  // }
+  // }
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <>
-      <div className="container">{list}</div>
-      {currency && <div>{currency}</div>}
-    </>
+    // <>
+    // <div className="container">{list}</div>
+    // {currency && <div>{currency}</div>}
+    // {currency ? (
+    // <div>
+    // <Line
+    // data={{
+    // labels: [
+    // formatDate(sixDaysAgo),
+    // formatDate(fiveDaysAgo),
+    // formatDate(fourDaysAgo),
+    // formatDate(threeDaysAgo),
+    // formatDate(twoDaysAgo),
+    // formatDate(yesterday),
+    // formatDate(today),
+    // ],
+    // datasets: [
+    // {
+    // label: "Day Rate",
+    // data: [
+    // "1","2","3","4","5","6","7",
+    // ],
+    // backgroundColor: "transparent",
+    // borderColor: "#b30000",
+    // borderWidth: 1,
+    // },
+    // ],
+    // }}
+    // height={200}
+    // width={200}
+    // options={{ maintainAspectRatio: false }}
+    // ></Line>
+    // <div className="buttons">
+    // {/ <button className="min">MINIMUM {minValue} </button>
+    // <button className="max">MAXIMUM {maxValue}</button> /}
+    // </div>
+    // </div>
+    // ) : (
+    // ""
+    // )}
+    // </>
+    <></>
   );
 };
 
