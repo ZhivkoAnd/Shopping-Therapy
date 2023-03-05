@@ -55,18 +55,18 @@ const Trends = () => {
     return format(date, "yyyy-MM-dd");
   };
 
+  const formatedDates = [
+    formatDate(today),
+    formatDate(yesterday),
+    formatDate(twoDaysAgo),
+    formatDate(threeDaysAgo),
+    formatDate(fourDaysAgo),
+    formatDate(fiveDaysAgo),
+    formatDate(sixDaysAgo),
+  ];
+
   const { data, isLoading, isError } = useQuery(
-    [
-      "currencies",
-      formatDate(today),
-      formatDate(yesterday),
-      formatDate(twoDaysAgo),
-      formatDate(threeDaysAgo),
-      formatDate(fourDaysAgo),
-      formatDate(fiveDaysAgo),
-      formatDate(sixDaysAgo),
-      currency,
-    ],
+    ["currencies", [...formatedDates], currency],
     () =>
       fetchFruitsQuery(
         formatDate(today),
@@ -84,6 +84,7 @@ const Trends = () => {
   );
   // Promise.allSettled()
 
+  // Get the rates for each of the fetched dates, but remove the first item before mapping
   const rates: any = data?.slice(1).map((e: any) => e.rates[currency]);
 
   const list = [];
@@ -115,15 +116,7 @@ const Trends = () => {
         <div>
           <Line
             data={{
-              labels: [
-                formatDate(sixDaysAgo),
-                formatDate(fiveDaysAgo),
-                formatDate(fourDaysAgo),
-                formatDate(threeDaysAgo),
-                formatDate(twoDaysAgo),
-                formatDate(yesterday),
-                formatDate(today),
-              ],
+              labels: [...formatedDates],
               datasets: [
                 {
                   label: "Day Rate",
