@@ -1,8 +1,4 @@
-interface Data {
-  fields: {
-    date?: number | Date | string;
-  };
-}
+import { Data } from "../types";
 
 export const filterDateAscending = (arr: Data[]) => {
   return [...arr].sort((a, b) => Number(a.fields.date) - Number(b.fields.date));

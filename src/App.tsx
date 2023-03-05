@@ -13,6 +13,8 @@ import "../styles/Footer.scss";
 import Layout from "./components/ui/Layout";
 import Admin from "./components/Admin";
 
+// Lazy loading - the components will load only when the user visits them
+
 const Shop = lazy(() => import("./components/Shop"));
 const Vacations = lazy(() => import("./components/Vacations"));
 const Login = lazy(() => import("./components/ui/LoginPanel"));

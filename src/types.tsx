@@ -70,3 +70,9 @@ export interface FilterProps {
   inputQuery?: string;
   isAdminPage?: boolean;
 }
+
+export interface Data {
+  fields: {
+    date?: number | Date | string;
+  };
+}
