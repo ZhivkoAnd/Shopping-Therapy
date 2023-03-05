@@ -90,6 +90,7 @@ const Trends = () => {
   const list = [];
 
   //    <>{key}</>:<>{value}</>
+  // Map through the list of all the currencies with "latest" date and push them into a new array
   if (data) {
     for (const [key, value] of Object.entries(data[0].rates)) {
       list.push(
@@ -131,7 +132,6 @@ const Trends = () => {
             width={200}
             options={{ maintainAspectRatio: false }}
           ></Line>
-          <div className="buttons"></div>
         </div>
       ) : (
         ""
