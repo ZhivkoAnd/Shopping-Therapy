@@ -19,18 +19,25 @@
       "image": "https://static01.nyt.com/images/2018/11/18/travel/18Hours-Bucharest1/18Hours-Bucharest1-articleLarge-v3.jpg?quality=75&auto=webp&disable=upscale"
     }
   ],
-  "data": {
-    "exchange_rates": {
-      "28.02.2023": {
-        "CAD": 1.357652,
-        "EUR": 0.942552,
-        "USD": 1
-      },
-      "29.02.2023": {
-        "CAD": 1.357651,
-        "EUR": 0.94251,
-        "USD": 1
-      }
+  "rates": [
+    {
+      "id": 1,
+      "date": "2023.01.01",
+      "code": "CAD",
+      "value": 1.1
+    },
+    {
+      "id": 2,
+      "date": "2023.01.01",
+      "code": "EUR",
+      "value": 0.5
+    },
+
+    {
+      "id": 3,
+      "date": "2023.01.01",
+      "code": "USD",
+      "value": 1
     }
-  }
+  ]
 }
