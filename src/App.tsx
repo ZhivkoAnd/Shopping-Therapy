@@ -18,7 +18,6 @@ const Vacations = lazy(() => import("./components/Vacations"));
 const Login = lazy(() => import("./components/ui/LoginPanel"));
 const Register = lazy(() => import("./components/ui/RegisterPanel"));
 const UpdateProduct = lazy(() => import("./components/UpdateProduct"));
-const Trends = lazy(() => import("./components/Trends"));
 const TrendsCurrency = lazy(() => import("./components/TrendsCurrency"));
 
 function App() {
