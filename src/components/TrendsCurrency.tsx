@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { subDays, format } from "date-fns";
 import { Line } from "react-chartjs-2";
+import LoadingSpinners from "./ui/LoadingSpinners";
 import "chart.js/auto";
 
 const Trends = () => {
@@ -137,10 +138,19 @@ const Trends = () => {
         ""
       )}
 
-      {rates.length > 0 && !isLoading && (
+      {rates.every((e: any) => e !== undefined) ? (
+        <div className="trends__values">
+          <div className="trends__values-max">
+            Max: {Math.round(Math.max(...rates))}
+          </div>
+          <div className="trends__values-min">
+            Min: {Math.round(Math.min(...rates))}
+          </div>
+        </div>
+      ) : (
         <>
-          <div>{Math.max(...rates)}</div>
-          <div>{Math.min(...rates)}</div>
+          <LoadingSpinners three_dots />
+          <LoadingSpinners three_dots />
         </>
       )}
     </div>

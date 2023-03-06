@@ -124,6 +124,11 @@ h2 {
   margin-bottom: 2rem;
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
   .page-content {
     padding-top: 1.5rem;
