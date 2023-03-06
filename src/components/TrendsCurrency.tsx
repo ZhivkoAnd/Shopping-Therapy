@@ -42,7 +42,7 @@ const Trends = () => {
     ]);
   };
 
-  const [currency, setCurrency] = useState<any>("CAD");
+  const [selectedCurrency, setSelectedCurrency] = useState<any>("CAD");
 
   const today = new Date();
   const yesterday = subDays(today, 1);
@@ -67,7 +67,7 @@ const Trends = () => {
   ];
 
   const { data, isLoading, isError } = useQuery(
-    ["currencies", [...formatedDates], currency],
+    ["currencies", [...formatedDates], selectedCurrency],
     () =>
       fetchFruitsQuery(
         formatDate(today),
@@ -77,28 +77,29 @@ const Trends = () => {
         formatDate(fourDaysAgo),
         formatDate(fiveDaysAgo),
         formatDate(sixDaysAgo),
-        currency
+        selectedCurrency
       ),
     {
       keepPreviousData: true,
     }
   );
-  // Promise.allSettled()
 
   // Get the rates for each of the fetched dates, but remove the first item before mapping
-  const rates: any = data?.slice(1).map((e: any) => e.rates[currency]);
+  const currencyRates: any = data
+    ?.slice(1)
+    .map((e: any) => e.rates[selectedCurrency]);
 
-  const list = [];
+  const currencyButtonList = [];
 
   //    <>{key}</>:<>{value}</>
   // Map through the list of all the currencies with "latest" date and push them into a new array
   if (data) {
     for (const [key, value] of Object.entries(data[0].rates)) {
-      list.push(
+      currencyButtonList.push(
         <button
           className="trends__button"
           key={key}
-          onClick={() => setCurrency(key)}
+          onClick={() => setSelectedCurrency(key)}
         >
           <>{key}</>
         </button>
@@ -112,9 +113,11 @@ const Trends = () => {
 
   return (
     <div className="trends">
-      <div className="trends__list">{list}</div>
-      {currency && <div className="trends__selected-currency">{currency}</div>}
-      {currency ? (
+      <div className="trends__list">{currencyButtonList}</div>
+      {selectedCurrency && (
+        <div className="trends__selected-currency">{selectedCurrency}</div>
+      )}
+      {selectedCurrency && (
         <div>
           <Line
             data={{
@@ -122,7 +125,7 @@ const Trends = () => {
               datasets: [
                 {
                   label: "Day Rate",
-                  data: [...rates],
+                  data: [...currencyRates],
                   backgroundColor: "transparent",
                   borderColor: "#b30000",
                   borderWidth: 1,
@@ -134,17 +137,15 @@ const Trends = () => {
             options={{ maintainAspectRatio: false }}
           ></Line>
         </div>
-      ) : (
-        ""
       )}
 
-      {rates.every((e: any) => e !== undefined) ? (
+      {currencyRates.every((currency: any) => currency !== undefined) ? (
         <div className="trends__values">
           <div className="trends__values-max">
-            Max: {Math.round(Math.max(...rates))}
+            Max: {Math.max(...currencyRates)}
           </div>
           <div className="trends__values-min">
-            Min: {Math.round(Math.min(...rates))}
+            Min: {Math.min(...currencyRates)}
           </div>
         </div>
       ) : (
