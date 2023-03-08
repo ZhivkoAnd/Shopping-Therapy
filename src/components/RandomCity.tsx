@@ -18,24 +18,23 @@ const RandomCity = () => {
     },
   });
 
-  let city: any = [];
-  const randomCity = () => {
-    if (data) {
-      for (let i = 0; i < 3; i++)
-        city.push(data[Math.floor(Math.random() * data.length)]);
-    }
+  const getRandomCity = () => {
+    return data && data[Math.floor(Math.random() * data.length)];
   };
 
-  randomCity();
-  console.log(city);
-
   useEffect(() => {
-    setAnswers([correctCity, ...city]);
-  }, []);
+    setAnswers([
+      correctCity,
+      getRandomCity(),
+      getRandomCity(),
+      getRandomCity(),
+    ]);
+  }, [correctCity]);
 
   console.log(answers);
 
-  return <div>{answers.map((e: any) => e.title)}</div>;
+  //   return <div>{answers.map((e: any) => e.title)}</div>;
+  return <></>;
 };
 
 export default RandomCity;
