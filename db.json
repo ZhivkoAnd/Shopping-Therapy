@@ -17,6 +17,24 @@
       "title": "Bucharest",
       "price": 50,
       "image": "https://static01.nyt.com/images/2018/11/18/travel/18Hours-Bucharest1/18Hours-Bucharest1-articleLarge-v3.jpg?quality=75&auto=webp&disable=upscale"
+    },
+    {
+      "id": 4,
+      "title": "Oslo",
+      "price": 130,
+      "image": "https://www.fjords.com/wp-content/uploads/2022/08/oslo_oslofjord_lambda_opera_munch_fjords_norway-2000x1200.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Stockholm",
+      "price": 650,
+      "image": "https://media.timeout.com/images/105171709/750/422/image.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Tokyo",
+      "price": 250,
+      "image": "https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_768/MTk0OTU3Mjc5NTE3MjIyMDUw/gettyimages-1390815938.jpg"
     }
   ],
   "rates": [
