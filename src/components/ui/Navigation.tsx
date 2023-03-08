@@ -37,6 +37,11 @@ const pages = [
     label: "Trends",
     link: "/trends",
   },
+  {
+    id: 5,
+    label: "Random City",
+    link: "/random-city",
+  },
 ];
 
 interface Props {

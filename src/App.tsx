@@ -21,6 +21,7 @@ const Login = lazy(() => import("./components/ui/LoginPanel"));
 const Register = lazy(() => import("./components/ui/RegisterPanel"));
 const UpdateProduct = lazy(() => import("./components/UpdateProduct"));
 const TrendsCurrency = lazy(() => import("./components/TrendsCurrency"));
+const RandomCity = lazy(() => import("./components/RandomCity"));
 
 function App() {
   const [colorMode, setColorMode] = useState("dark");
@@ -44,6 +45,7 @@ function App() {
               <Route path="/update-product/:id" element={<UpdateProduct />} />
               <Route path="/vacations" element={<Vacations />} />
               <Route path="/trends" element={<TrendsCurrency />} />
+              <Route path="/random-city" element={<RandomCity />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Routes>
