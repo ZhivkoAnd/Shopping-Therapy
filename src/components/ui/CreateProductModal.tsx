@@ -40,6 +40,7 @@ export default function TransitionsModal() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    // mutate sends this object to the Create Data API call
     createMutate({
       title: titleRef.current.value,
       price: priceRef.current.value,
@@ -83,11 +84,7 @@ export default function TransitionsModal() {
               </div>
               <div className="form-group">
                 <label>Price</label>
-                <input
-                  ref={priceRef}
-                  type="number"
-                  className="form-control"
-                ></input>
+                <input ref={priceRef} type="number" className="form-control" />
               </div>
               <div className="form-group">
                 <label>Image</label>

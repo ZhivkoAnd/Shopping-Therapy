@@ -52,12 +52,18 @@ export const createData = async (data: {}) => {
     headers: {
       "Content-Type": "application/json",
     },
+    // JSON.stringify() method converts the JavaScript object to a string with JSON format. This is because servers typically expect data to be sent in a certain format, such as JSON or XML, and JSON.stringify() helps to ensure that the data is sent in the correct format.
+    // {title: '123', price: '123', image: '123'} => {"title":"123","price":"123","image":"123"}
     body: JSON.stringify(data),
   });
+  console.log(data);
+  console.log(JSON.stringify(data));
   return response.json();
 };
 
 // Update Data
+
+// As parameters we use id and data with spread operator but we can also use {data} and then data.id in the query string.
 export const updateData = async ({ id, ...data }: any) => {
   const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities/${id}`, {
     method: "PUT",

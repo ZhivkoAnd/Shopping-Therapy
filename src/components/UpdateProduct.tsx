@@ -36,6 +36,7 @@ const CreateUpdateProduct = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    // mutate sends this object to the update Data API call
     updateMutate({
       id: id,
       title: titleRef.current.value,
