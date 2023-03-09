@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 const RandomCity = () => {
   const [correctCity, setCorrectCity] = useState<any>("");
   const [answers, setAnswers] = useState<any>("");
-  const [correctAnswer, setCorrectAnswer] = useState("");
+  const [correctAnswer, setCorrectAnswer] = useState<any>("");
 
   const randomCityQuery = async () => {
     const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`);
@@ -35,10 +35,25 @@ const RandomCity = () => {
 
   console.log(answers);
 
+  const checkImage = (image: any) => {
+    if (correctCity.image === image) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
+  };
+
   return (
     <div>
+      {correctCity.image}
       {answers &&
-        answers.map((e: any) => <button key={e.id}>{e.title}</button>)}
+        answers
+          .map((e: any) => (
+            <button key={e.id} onClick={() => checkImage(e.image)}>
+              {e.title}
+            </button>
+          ))
+          .sort(() => 0.5 - Math.random())}
     </div>
   );
 };
