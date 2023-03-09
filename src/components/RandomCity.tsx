@@ -35,7 +35,12 @@ const RandomCity = () => {
 
   console.log(answers);
 
-  return <div>{answers && answers.map((e: any) => e.title)}</div>;
+  return (
+    <div>
+      {answers &&
+        answers.map((e: any) => <button key={e.id}>{e.title}</button>)}
+    </div>
+  );
 };
 
 export default RandomCity;
