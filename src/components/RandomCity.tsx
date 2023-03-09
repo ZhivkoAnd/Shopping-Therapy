@@ -15,13 +15,17 @@ const RandomCity = () => {
     refetchOnWindowFocus: false,
   });
 
+  const randomCity = () => {
+    return data[Math.floor(Math.random() * data.length)];
+  };
+
   useEffect(() => {
     if (data) {
-      const correctCity = data[Math.floor(Math.random() * data.length)];
+      const correctCity = randomCity();
       setCorrectCity(correctCity);
       const mySet = new Set([correctCity]);
       while (mySet.size < 4) {
-        const element = data[Math.floor(Math.random() * data.length)];
+        const element = randomCity();
         mySet.add(element);
       }
       setAnswers([...mySet]);
