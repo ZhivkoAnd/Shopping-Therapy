@@ -45,7 +45,12 @@ const RandomCity = () => {
 
   return (
     <div>
-      {correctCity.image}
+      {
+        <img
+          src={correctCity.image}
+          style={{ width: "100px", height: "100px" }}
+        />
+      }
       {answers &&
         answers
           .map((e: any) => (
