@@ -16,6 +16,7 @@ const RandomCity = () => {
       const correctCity = data[Math.floor(Math.random() * data.length)];
       setCorrectCity(correctCity);
     },
+    refetchOnWindowFocus: false,
   });
 
   const buildArray = () => {
