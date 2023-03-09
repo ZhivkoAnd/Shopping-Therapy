@@ -32,15 +32,17 @@ const RandomCity = () => {
 
   useEffect(() => {
     buildArray();
-  }, [correctCity]);
+  }, [correctCity, correctAnswer]);
 
   console.log(answers);
 
   const checkImage = (image: any) => {
     if (correctCity.image === image) {
-      console.log(true);
+      setCorrectAnswer(true);
+      console.log("true");
     } else {
-      console.log(false);
+      setCorrectAnswer(false);
+      console.log("false");
     }
   };
 
