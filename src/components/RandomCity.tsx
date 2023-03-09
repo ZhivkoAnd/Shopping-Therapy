@@ -14,21 +14,28 @@ const RandomCity = () => {
   const { data } = useQuery(["random-city"], randomCityQuery, {
     onSuccess: (data) => {
       const correctCity = data[Math.floor(Math.random() * data.length)];
-      setCorrectCity(correctCity);
+      setCorrectCity(correctCity.title);
     },
   });
 
   const getRandomCity = () => {
-    return data && data[Math.floor(Math.random() * data.length)];
+    return data && data[Math.floor(Math.random() * data.length)].title;
+  };
+
+  const buildArray = () => {
+    const mySet = new Set([correctCity]);
+    for (let i = 0; i < 4; i++) {
+      const element = Math.floor(Math.random() * 100); // generate a random number
+      mySet.add(element);
+    }
+    setAnswers(mySet);
   };
 
   useEffect(() => {
-    setAnswers([
-      correctCity,
-      getRandomCity(),
-      getRandomCity(),
-      getRandomCity(),
-    ]);
+    // while (mySet.size < 4) {
+    //   mySet.add(getRandomCity());
+    // }
+    buildArray();
   }, [correctCity]);
 
   console.log(answers);
