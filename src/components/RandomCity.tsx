@@ -20,6 +20,10 @@ const RandomCity = () => {
   };
 
   useEffect(() => {
+    buildGame();
+  }, [data]);
+
+  const buildGame = () => {
     if (data) {
       const correctCity = randomCity();
       setCorrectCity(correctCity);
@@ -30,9 +34,7 @@ const RandomCity = () => {
       }
       setAnswers([...mySet]);
     }
-  }, [correctAnswer, data, correctAnswer]);
-
-  console.log(answers);
+  };
 
   const checkImage = (image: any) => {
     if (correctCity.image === image) {
@@ -44,8 +46,13 @@ const RandomCity = () => {
     }
   };
 
+  const newGame = () => {
+    setCorrectAnswer(false);
+  };
+
   return (
     <div>
+      {correctAnswer && <button onClick={newGame}>new game ?</button>}
       {
         <img
           src={correctCity.image}
