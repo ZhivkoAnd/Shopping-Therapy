@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import Button from "@mui/material/Button";
 
 const RandomCity = () => {
   const [correctCity, setCorrectCity] = useState<any>("");
   const [answers, setAnswers] = useState<any>("");
-  const [correctAnswer, setCorrectAnswer] = useState<any>("");
+  const [correctAnswer, setCorrectAnswer] = useState<any>(false);
 
   const randomCityQuery = async () => {
     const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`);
@@ -65,9 +66,15 @@ const RandomCity = () => {
       <div className="random-city__answers">
         {answers &&
           answers.map((e: any) => (
-            <button key={e.id} onClick={() => checkImage(e.image)}>
+            <Button
+              key={e.id}
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              color={correctCity.image === e.image ? "warning" : "info"}
+              onClick={() => checkImage(e.image)}
+            >
               {e.title}
-            </button>
+            </Button>
           ))}
       </div>
     </div>
