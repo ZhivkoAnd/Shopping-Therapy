@@ -8,7 +8,7 @@ const RandomCity = () => {
   const [userAnswer, setUserAnswer] = useState<any>("");
   const [selectedButtonId, setSelectedButtonId] = useState<any>("");
   const [score, setScore] = useState<any>(0);
-  const [seconds, setSeconds] = useState(5);
+  const [seconds, setSeconds] = useState(50);
   const [isRunning, setIsRunning] = useState<any>(false);
 
   // query to fetch the cities
@@ -69,6 +69,7 @@ const RandomCity = () => {
       setScore((score: any) => score + 1);
     } else {
       setUserAnswer(false);
+      setIsRunning(false);
       setScore(0);
     }
   };
@@ -76,7 +77,7 @@ const RandomCity = () => {
   const newGame = () => {
     setUserAnswer("");
     setSelectedButtonId("");
-    setSeconds(5);
+    setSeconds(50);
     setIsRunning(true);
     startGame();
   };
@@ -130,15 +131,17 @@ const RandomCity = () => {
         {userAnswer === false && seconds && (
           <>
             <div className="random-cty__wrong-answer">Wrong answer!</div>{" "}
-            <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
-              New game ?
-            </Button>
           </>
         )}
         {seconds === 0 && (
           <div className="random-cty__correct-times-up">Your time is up !</div>
         )}
       </div>
+      {!userAnswer && !isRunning && (
+        <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
+          New game ?
+        </Button>
+      )}
     </div>
   );
 };
