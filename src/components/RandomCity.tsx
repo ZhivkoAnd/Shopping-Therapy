@@ -4,27 +4,31 @@ import Button from "@mui/material/Button";
 
 const RandomCity = () => {
   const [correctCity, setCorrectCity] = useState<any>("");
-  const [answers, setAnswers] = useState<any>("");
-  const [correctAnswer, setCorrectAnswer] = useState<any>("");
+  const [answersArray, setAnswersArray] = useState<any>("");
+  const [userAnswer, setUserAnswer] = useState<any>("");
   const [selectedButtonId, setSelectedButtonId] = useState<any>("");
 
-  const randomCityQuery = async () => {
+  // query to fetch the cities
+  const citiesQuery = async () => {
     const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`);
     return response.json();
   };
 
-  const { data } = useQuery(["random-city"], randomCityQuery, {
+  const { data } = useQuery(["random-city"], citiesQuery, {
     refetchOnWindowFocus: false,
   });
 
+  // generate random city based on the received data
   const randomCity = () => {
     return data[Math.floor(Math.random() * data.length)];
   };
 
+  // Initial build of the game
   useEffect(() => {
     buildGame();
   }, [data]);
 
+  // I make a set where I put the correctCity, and then fill it with random answers untill it reaches 4 answers
   const buildGame = () => {
     if (data) {
       const correctCity = randomCity();
@@ -34,20 +38,21 @@ const RandomCity = () => {
         const element = randomCity();
         mySet.add(element);
       }
-      setAnswers([...mySet].sort(() => 0.5 - Math.random()));
+      // finally randomize the answers in the array
+      setAnswersArray([...mySet].sort(() => 0.5 - Math.random()));
     }
   };
 
   const checkImage = (image: any) => {
     if (correctCity.image === image) {
-      setCorrectAnswer(true);
+      setUserAnswer(true);
     } else {
-      setCorrectAnswer(false);
+      setUserAnswer(false);
     }
   };
 
   const newGame = () => {
-    setCorrectAnswer(false);
+    setUserAnswer(false);
     buildGame();
   };
   return (
@@ -61,15 +66,15 @@ const RandomCity = () => {
         }
       </div>
       <div className="random-city__answers">
-        {answers &&
-          answers.map((e: any) => (
+        {answersArray &&
+          answersArray.map((e: any) => (
             <Button
               key={e.id}
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               color={
                 selectedButtonId === e.id
-                  ? correctAnswer
+                  ? userAnswer
                     ? "success"
                     : "error"
                   : "info"
@@ -84,12 +89,12 @@ const RandomCity = () => {
           ))}
       </div>
       <div className="random-city__new-game">
-        {correctAnswer && (
+        {userAnswer && (
           <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
             New game ?
           </Button>
         )}
-        {!correctAnswer && <div>Wrong answer!</div>}
+        {!userAnswer && <div>Wrong answer!</div>}
       </div>
     </div>
   );
