@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 const RandomCity = () => {
   const [correctCity, setCorrectCity] = useState<any>("");
   const [answersArray, setAnswersArray] = useState<any>("");
-  const [userAnswer, setUserAnswer] = useState<any>("");
+  const [userAnswer, setUserAnswer] = useState<any>("Start");
   const [selectedButtonId, setSelectedButtonId] = useState<any>("");
 
   // query to fetch the cities
@@ -30,6 +30,7 @@ const RandomCity = () => {
 
   // I make a set where I put the correctCity, and then fill it with random answers untill it reaches 4 answers
   const startGame = () => {
+    setUserAnswer("Start");
     if (data) {
       const correctCity = randomCity();
       setCorrectCity(correctCity);
@@ -43,17 +44,18 @@ const RandomCity = () => {
     }
   };
 
+  console.log(userAnswer);
   const checkAnswer = (image: any) => {
     if (correctCity.image === image) {
-      setUserAnswer(true);
+      setUserAnswer("Correct");
     } else {
-      setUserAnswer(false);
+      setUserAnswer("Wrong");
     }
   };
 
   const newGame = () => {
     setSelectedButtonId("");
-    setUserAnswer(false);
+    setUserAnswer("Start");
     startGame();
   };
 
@@ -76,7 +78,7 @@ const RandomCity = () => {
               sx={{ mt: 3, mb: 2 }}
               color={
                 selectedButtonId === e.id
-                  ? userAnswer
+                  ? userAnswer === "Correct"
                     ? "success"
                     : "error"
                   : "info"
@@ -91,7 +93,7 @@ const RandomCity = () => {
           ))}
       </div>
       <div className="random-city__new-game">
-        {userAnswer && (
+        {userAnswer === "Correct" && (
           <>
             <div className="random-cty__correct-answer">Correct !</div>
             <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
@@ -99,8 +101,12 @@ const RandomCity = () => {
             </Button>
           </>
         )}
-        {!userAnswer && (
-          <div className="random-cty__correct-answer">Wrong answer!</div>
+        {userAnswer === "Wrong" && (
+          <div className="random-cty__correct-answer">Wrong answer !</div>
+        )}
+
+        {userAnswer === "Start" && (
+          <div className="random-cty__correct-answer"></div>
         )}
       </div>
     </div>
