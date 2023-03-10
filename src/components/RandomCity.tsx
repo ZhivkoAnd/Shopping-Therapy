@@ -7,6 +7,7 @@ const RandomCity = () => {
   const [answersArray, setAnswersArray] = useState<any>("");
   const [userAnswer, setUserAnswer] = useState<any>("");
   const [selectedButtonId, setSelectedButtonId] = useState<any>("");
+  const [score, setScore] = useState<any>(0);
 
   // query to fetch the cities
   const citiesQuery = async () => {
@@ -31,6 +32,7 @@ const RandomCity = () => {
   // I make a set where I put the correctCity, and then fill it with random answers untill it reaches 4 answers
   const startGame = () => {
     setUserAnswer("");
+
     if (data) {
       const correctCity = randomCity();
       setCorrectCity(correctCity);
@@ -47,8 +49,10 @@ const RandomCity = () => {
   const checkAnswer = (image: any) => {
     if (correctCity.image === image) {
       setUserAnswer(true);
+      setScore((score: any) => score + 1);
     } else {
       setUserAnswer(false);
+      setScore(0);
     }
   };
 
@@ -59,6 +63,7 @@ const RandomCity = () => {
 
   return (
     <div className="random-city">
+      <div className="random-city__score">Current score: {score}</div>
       <div className="random-city__image">
         {
           <img
