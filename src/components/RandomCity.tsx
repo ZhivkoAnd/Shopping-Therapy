@@ -39,11 +39,8 @@ const RandomCity = () => {
   const checkImage = (image: any) => {
     if (correctCity.image === image) {
       setCorrectAnswer(true);
-
-      console.log("true");
     } else {
       setCorrectAnswer(false);
-      console.log("false");
     }
   };
 
@@ -52,23 +49,27 @@ const RandomCity = () => {
     buildGame();
   };
 
-  console.log(answers);
-
   return (
-    <div>
-      {correctAnswer && <button onClick={newGame}>new game ?</button>}
-      {
-        <img
-          src={correctCity.image}
-          style={{ width: "100px", height: "100px" }}
-        />
-      }
-      {answers &&
-        answers.map((e: any) => (
-          <button key={e.id} onClick={() => checkImage(e.image)}>
-            {e.title}
-          </button>
-        ))}
+    <div className="random-city">
+      <div className="random-city__new-game">
+        {correctAnswer && <button onClick={newGame}>new game ?</button>}
+      </div>
+      <div className="random-city__image">
+        {
+          <img
+            src={correctCity.image}
+            style={{ width: "100px", height: "100px" }}
+          />
+        }
+      </div>
+      <div className="random-city__answers">
+        {answers &&
+          answers.map((e: any) => (
+            <button key={e.id} onClick={() => checkImage(e.image)}>
+              {e.title}
+            </button>
+          ))}
+      </div>
     </div>
   );
 };
