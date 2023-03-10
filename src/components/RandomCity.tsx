@@ -6,6 +6,7 @@ const RandomCity = () => {
   const [correctCity, setCorrectCity] = useState<any>("");
   const [answers, setAnswers] = useState<any>("");
   const [correctAnswer, setCorrectAnswer] = useState<any>(false);
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState<any>(-1);
 
   const randomCityQuery = async () => {
     const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`);
@@ -50,11 +51,11 @@ const RandomCity = () => {
     buildGame();
   };
 
+  console.log(selectedButtonIndex);
+  console.log(correctCity.id);
+
   return (
     <div className="random-city">
-      <div className="random-city__new-game">
-        {correctAnswer && <button onClick={newGame}>new game ?</button>}
-      </div>
       <div className="random-city__image">
         {
           <img
@@ -70,12 +71,26 @@ const RandomCity = () => {
               key={e.id}
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              color={correctCity.image === e.image ? "warning" : "info"}
-              onClick={() => checkImage(e.image)}
+              color={
+                correctAnswer && selectedButtonIndex === correctCity.id
+                  ? "success"
+                  : "info"
+              }
+              onClick={() => {
+                setSelectedButtonIndex(e.id);
+                checkImage(e.image);
+              }}
             >
               {e.title}
             </Button>
           ))}
+      </div>
+      <div className="random-city__new-game">
+        {correctAnswer && (
+          <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
+            New game ?
+          </Button>
+        )}
       </div>
     </div>
   );
