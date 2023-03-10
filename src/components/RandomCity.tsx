@@ -8,7 +8,8 @@ const RandomCity = () => {
   const [userAnswer, setUserAnswer] = useState<any>("");
   const [selectedButtonId, setSelectedButtonId] = useState<any>("");
   const [score, setScore] = useState<any>(0);
-  const [seconds, setSeconds] = useState(50);
+  const [seconds, setSeconds] = useState(5);
+  const [isRunning, setIsRunning] = useState<any>(false);
 
   // query to fetch the cities
   const citiesQuery = async () => {
@@ -28,11 +29,12 @@ const RandomCity = () => {
   // Initial build of the game
   useEffect(() => {
     startGame();
+    setIsRunning(false);
   }, [data]);
 
   useEffect(() => {
     let interval: any = null;
-    if (!userAnswer && seconds > 0) {
+    if (isRunning && !userAnswer && seconds > 0) {
       interval = setInterval(() => {
         setSeconds((seconds) => seconds - 1);
       }, 1000);
@@ -42,14 +44,12 @@ const RandomCity = () => {
     }
 
     return () => clearInterval(interval);
-  }, [seconds, userAnswer]);
+  }, [seconds, isRunning, userAnswer]);
 
   console.log(seconds);
 
   // I make a set where I put the correctCity, and then fill it with random answers untill it reaches 4 answers
   const startGame = () => {
-    setUserAnswer("");
-
     if (data) {
       const correctCity = randomCity();
       setCorrectCity(correctCity);
@@ -74,8 +74,10 @@ const RandomCity = () => {
   };
 
   const newGame = () => {
+    setUserAnswer("");
     setSelectedButtonId("");
-    setSeconds(50);
+    setSeconds(5);
+    setIsRunning(true);
     startGame();
   };
 
@@ -118,18 +120,23 @@ const RandomCity = () => {
       </div>
       <div className="random-city__new-game">
         {userAnswer === true && (
-          <div className="random-cty__correct-answer">Correct !</div>
+          <>
+            <div className="random-cty__correct-answer">Correct !</div>{" "}
+            <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
+              New game ?
+            </Button>
+          </>
         )}
         {userAnswer === false && seconds && (
-          <div className="random-cty__correct-answer">Wrong answer !</div>
+          <>
+            <div className="random-cty__wrong-answer">Wrong answer!</div>{" "}
+            <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
+              New game ?
+            </Button>
+          </>
         )}
         {seconds === 0 && (
           <div className="random-cty__correct-times-up">Your time is up !</div>
-        )}
-        {!userAnswer && (
-          <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
-            New game ?
-          </Button>
         )}
       </div>
     </div>
