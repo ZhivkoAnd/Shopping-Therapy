@@ -25,11 +25,11 @@ const RandomCity = () => {
 
   // Initial build of the game
   useEffect(() => {
-    buildGame();
+    startGame();
   }, [data]);
 
   // I make a set where I put the correctCity, and then fill it with random answers untill it reaches 4 answers
-  const buildGame = () => {
+  const startGame = () => {
     if (data) {
       const correctCity = randomCity();
       setCorrectCity(correctCity);
@@ -43,7 +43,8 @@ const RandomCity = () => {
     }
   };
 
-  const checkImage = (image: any) => {
+  // check if the correct answer
+  const checkAnswer = (image: any) => {
     if (correctCity.image === image) {
       setUserAnswer(true);
     } else {
@@ -53,8 +54,9 @@ const RandomCity = () => {
 
   const newGame = () => {
     setUserAnswer(false);
-    buildGame();
+    startGame();
   };
+
   return (
     <div className="random-city">
       <div className="random-city__image">
@@ -81,7 +83,7 @@ const RandomCity = () => {
               }
               onClick={() => {
                 setSelectedButtonId(e.id);
-                checkImage(e.image);
+                checkAnswer(e.image);
               }}
             >
               {e.title}
