@@ -5,8 +5,8 @@ import Button from "@mui/material/Button";
 const RandomCity = () => {
   const [correctCity, setCorrectCity] = useState<any>("");
   const [answers, setAnswers] = useState<any>("");
-  const [correctAnswer, setCorrectAnswer] = useState<any>(false);
-  const [selectedButtonIndex, setSelectedButtonIndex] = useState<any>(-1);
+  const [correctAnswer, setCorrectAnswer] = useState<any>("");
+  const [selectedButtonId, setSelectedButtonId] = useState<any>("");
 
   const randomCityQuery = async () => {
     const response = await fetch(`${import.meta.env.VITE_API_KEY}/cities`);
@@ -50,10 +50,6 @@ const RandomCity = () => {
     setCorrectAnswer(false);
     buildGame();
   };
-
-  console.log(selectedButtonIndex);
-  console.log(correctCity.id);
-
   return (
     <div className="random-city">
       <div className="random-city__image">
@@ -72,12 +68,14 @@ const RandomCity = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               color={
-                correctAnswer && selectedButtonIndex === correctCity.id
-                  ? "success"
+                selectedButtonId === e.id
+                  ? correctAnswer
+                    ? "success"
+                    : "error"
                   : "info"
               }
               onClick={() => {
-                setSelectedButtonIndex(e.id);
+                setSelectedButtonId(e.id);
                 checkImage(e.image);
               }}
             >
@@ -91,6 +89,7 @@ const RandomCity = () => {
             New game ?
           </Button>
         )}
+        {!correctAnswer && <div>Wrong answer!</div>}
       </div>
     </div>
   );
