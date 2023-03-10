@@ -32,13 +32,14 @@ const RandomCity = () => {
         const element = randomCity();
         mySet.add(element);
       }
-      setAnswers([...mySet]);
+      setAnswers([...mySet].sort(() => 0.5 - Math.random()));
     }
   };
 
   const checkImage = (image: any) => {
     if (correctCity.image === image) {
       setCorrectAnswer(true);
+
       console.log("true");
     } else {
       setCorrectAnswer(false);
@@ -48,7 +49,10 @@ const RandomCity = () => {
 
   const newGame = () => {
     setCorrectAnswer(false);
+    buildGame();
   };
+
+  console.log(answers);
 
   return (
     <div>
@@ -60,13 +64,11 @@ const RandomCity = () => {
         />
       }
       {answers &&
-        answers
-          .map((e: any) => (
-            <button key={e.id} onClick={() => checkImage(e.image)}>
-              {e.title}
-            </button>
-          ))
-          .sort(() => 0.5 - Math.random())}
+        answers.map((e: any) => (
+          <button key={e.id} onClick={() => checkImage(e.image)}>
+            {e.title}
+          </button>
+        ))}
     </div>
   );
 };
