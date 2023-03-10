@@ -104,10 +104,6 @@ const RandomCity = () => {
         {userAnswer === "Wrong" && (
           <div className="random-cty__correct-answer">Wrong answer !</div>
         )}
-
-        {userAnswer === "Start" && (
-          <div className="random-cty__correct-answer"></div>
-        )}
       </div>
     </div>
   );
