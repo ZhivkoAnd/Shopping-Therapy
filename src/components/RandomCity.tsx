@@ -43,7 +43,6 @@ const RandomCity = () => {
     }
   };
 
-  // check if the correct answer
   const checkAnswer = (image: any) => {
     if (correctCity.image === image) {
       setUserAnswer(true);
@@ -53,6 +52,7 @@ const RandomCity = () => {
   };
 
   const newGame = () => {
+    setSelectedButtonId("");
     setUserAnswer(false);
     startGame();
   };
@@ -92,11 +92,16 @@ const RandomCity = () => {
       </div>
       <div className="random-city__new-game">
         {userAnswer && (
-          <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
-            New game ?
-          </Button>
+          <>
+            <div className="random-cty__correct-answer">Correct !</div>
+            <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
+              New game ?
+            </Button>
+          </>
         )}
-        {!userAnswer && <div>Wrong answer!</div>}
+        {!userAnswer && (
+          <div className="random-cty__correct-answer">Wrong answer!</div>
+        )}
       </div>
     </div>
   );
