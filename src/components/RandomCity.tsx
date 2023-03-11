@@ -10,6 +10,7 @@ const RandomCity = () => {
   const [score, setScore] = useState<any>(0);
   const [seconds, setSeconds] = useState(50);
   const [isRunning, setIsRunning] = useState<any>(false);
+  const [gameOver, setGameOver] = useState<any>(false);
 
   // query to fetch the cities
   const citiesQuery = async () => {
@@ -67,14 +68,17 @@ const RandomCity = () => {
     if (correctCity.image === image) {
       setUserAnswer(true);
       setScore((score: any) => score + 1);
+      setGameOver(true);
     } else {
       setUserAnswer(false);
       setIsRunning(false);
       setScore(0);
+      setGameOver(true);
     }
   };
 
   const newGame = () => {
+    setGameOver(false);
     setUserAnswer("");
     setSelectedButtonId("");
     setSeconds(50);
@@ -100,6 +104,7 @@ const RandomCity = () => {
         {answersArray &&
           answersArray.map((e: any) => (
             <Button
+              disabled={gameOver ? true : false}
               key={e.id}
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
