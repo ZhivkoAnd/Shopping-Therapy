@@ -86,16 +86,15 @@ const RandomCity = () => {
 
   return (
     <div className="random-city">
-      <div className="random-city__seconds">Time left: {seconds}</div>
-      <div className="random-city__score">Current score: {score}</div>
-      <div className="random-city__image">
-        {
-          <img
-            src={correctCity.image}
-            style={{ width: "100px", height: "100px" }}
-          />
-        }
+      <div className="random-city__time">
+        Time left: <span className="random-city__seconds">{seconds}</span>
       </div>
+      <div className="random-city__score">
+        Current score:<span className="random-city__points"> {score}</span>
+      </div>
+
+      <img src={correctCity.image} className="random-city__image" />
+
       <div className="random-city__answers">
         {answersArray &&
           answersArray.map((e: any) => (
@@ -122,7 +121,7 @@ const RandomCity = () => {
       <div className="random-city__new-game">
         {userAnswer === true && (
           <>
-            <div className="random-cty__correct-answer">Correct !</div>{" "}
+            <div className="random-city__correct-answer">Correct !</div>{" "}
             <Button variant="contained" sx={{ mt: 3, mb: 2 }} onClick={newGame}>
               New game ?
             </Button>
@@ -130,11 +129,11 @@ const RandomCity = () => {
         )}
         {userAnswer === false && seconds && (
           <>
-            <div className="random-cty__wrong-answer">Wrong answer!</div>{" "}
+            <div className="random-city__wrong-answer">Wrong answer!</div>{" "}
           </>
         )}
         {seconds === 0 && (
-          <div className="random-cty__correct-times-up">Your time is up !</div>
+          <div className="random-city__times-up">Your time is up !</div>
         )}
       </div>
       {!userAnswer && !isRunning && (

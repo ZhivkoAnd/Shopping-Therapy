@@ -6,6 +6,7 @@ import "../styles/Global.scss";
 import "../styles/Trends.scss";
 import "../styles/Navigation.scss";
 import "../styles/VacationPanel.scss";
+import "../styles/RandomCity.scss";
 import "../styles/ActionBar.scss";
 import "../styles/ErrorUI.scss";
 import "../styles/Footer.scss";

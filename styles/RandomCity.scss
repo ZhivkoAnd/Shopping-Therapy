@@ -1,0 +1,49 @@
+.random-city {
+  &__answers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__image {
+    width: 30rem;
+    height: 30rem;
+    box-shadow: 1px -1px 16px -1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px -1px 16px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px -1px 16px -1px rgba(0, 0, 0, 0.75);
+    margin-bottom: 1rem;
+  }
+
+  &__time {
+    font-size: 1.5rem;
+  }
+  &__score {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  &__seconds {
+    font-size: 2rem;
+    color: darkred;
+  }
+
+  &__points {
+    font-size: 2rem;
+    color: darkgreen;
+  }
+
+  &__correct-answer {
+    font-size: 2rem;
+    color: darkgreen;
+  }
+
+  &__wrong-answer {
+    font-size: 2rem;
+    color: darkred;
+  }
+
+  &__times-up {
+    font-size: 2rem;
+    color: darkred;
+  }
+}
