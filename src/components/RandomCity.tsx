@@ -47,8 +47,6 @@ const RandomCity = () => {
     return () => clearInterval(interval);
   }, [seconds, isRunning, userAnswer]);
 
-  console.log(seconds);
-
   // I make a set where I put the correctCity, and then fill it with random answers untill it reaches 4 answers
   const startGame = () => {
     if (data) {
@@ -67,7 +65,7 @@ const RandomCity = () => {
   const checkAnswer = (image: any) => {
     if (correctCity.image === image) {
       setUserAnswer(true);
-      setScore((score: any) => score + 1);
+      setScore(!gameOver ? (score: any) => score + 1 : 0);
       setGameOver(true);
     } else {
       setUserAnswer(false);
@@ -86,8 +84,6 @@ const RandomCity = () => {
     startGame();
   };
 
-  console.log(userAnswer);
-
   return (
     <div className="random-city">
       <div className="random-city__seconds">Time left: {seconds}</div>
@@ -104,7 +100,6 @@ const RandomCity = () => {
         {answersArray &&
           answersArray.map((e: any) => (
             <Button
-              disabled={gameOver ? true : false}
               key={e.id}
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
