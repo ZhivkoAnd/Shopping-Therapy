@@ -33,6 +33,7 @@ const RandomCity = () => {
     setIsRunning(false);
   }, [data]);
 
+  // we asign interval to the setInterval function, which runs every 1000 ml (1s), and what it does is set the seconds to seconds - 1
   useEffect(() => {
     let interval: any = null;
     if (isRunning && !userAnswer && seconds > 0) {
@@ -43,7 +44,8 @@ const RandomCity = () => {
     if (seconds === 0) {
       setUserAnswer(false);
     }
-
+    // The return function is a cleanup function that clears the interval when the dependencies change or when the component using this useEffect hook unmounts.
+    // This is important to prevent memory leaks and unwanted behavior caused by leftover intervals.
     return () => clearInterval(interval);
   }, [seconds, isRunning, userAnswer]);
 
