@@ -49,7 +49,7 @@ const Slider = () => {
 
   return (
     <>
-      {city?.title}
+      <div>{city?.title}</div>
       <button onClick={nextCity}>Next</button>
       <button onClick={previousCity}>Previous</button>
       <button onClick={randomCity}>random</button>
@@ -83,17 +83,15 @@ export default Slider;
 //   const { data: city } = useQuery(["city", index], () => fetchCity(index));
 //   const { data: cities } = useQuery(["cities"], fetchCities);
 
-//   const nextItem = () => {
-//     setIndex((index) => checkNumber(index + 1));
+//   const nextCity = () => {
+//     setIndex((index) => checkCityIndex(index + 1));
 //   };
 
-//   const previousItem = () => {
-//     setIndex((index) => checkNumber(index - 1));
+//   const previousCity = () => {
+//     setIndex((index) => checkCityIndex(index - 1));
 //   };
 
-//   console.log(cities);
-
-//   const checkNumber = (number: any) => {
+//   const checkCityIndex = (number: any) => {
 //     // Unlike the previous scenario, where we use the indexes of the array , here we set the id of the objects
 //     if (number > cities.length) {
 //       return 1;
@@ -106,12 +104,23 @@ export default Slider;
 //     return number;
 //   };
 
+//   const randomCity = () => {
+//     // Get a random value from 0 and the length
+//     let randomNumber = Math.floor(Math.random() * cities.length);
+//     // check If that random number and our array length are the same
+//     if (randomNumber === index) {
+//       randomNumber = index + 1;
+//     }
+//     // Finallly we use the checkCity in case the number got bigger than the last item of the array
+//     setIndex(checkCityIndex(randomNumber));
+//   };
+
 //   return (
 //     <>
 //       {city?.title}
-//       <button onClick={nextItem}>Next</button>
-//       <button onClick={previousItem}>Previous</button>
-//       <button>random</button>
+//       <button onClick={nextCity}>Next</button>
+//       <button onClick={previousCity}>Previous</button>
+//       <button onClick={randomCity}>random</button>
 //     </>
 //   );
 // };
