@@ -47,6 +47,11 @@ const pages = [
     label: "Testing",
     link: "/testing",
   },
+  {
+    id: 7,
+    label: "Slider",
+    link: "/slider",
+  },
 ];
 
 interface Props {
