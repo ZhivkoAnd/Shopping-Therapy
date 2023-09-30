@@ -25,7 +25,6 @@ const TrendsCurrency = lazy(() => import("./components/TrendsCurrency"));
 const RandomCity = lazy(() => import("./components/RandomCity"));
 const Testing = lazy(() => import("./components/Testing"));
 const Slider = lazy(() => import("./components/Slider"));
-const Google = lazy(() => import("./components/Google"));
 
 function App() {
   const [colorMode, setColorMode] = useState("dark");
@@ -54,7 +53,6 @@ function App() {
               <Route path="/testing" element={<Testing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/google" element={<Google />} />
             </Routes>
           </Layout>
         </Suspense>
