@@ -52,11 +52,6 @@ const pages = [
     label: "Slider",
     link: "/slider",
   },
-  {
-    id: 8,
-    label: "Google",
-    link: "/google",
-  },
 ];
 
 interface Props {
