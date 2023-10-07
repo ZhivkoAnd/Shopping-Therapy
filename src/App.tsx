@@ -21,10 +21,11 @@ const Vacations = lazy(() => import("./components/Vacations"));
 const Login = lazy(() => import("./components/ui/LoginPanel"));
 const Register = lazy(() => import("./components/ui/RegisterPanel"));
 const UpdateProduct = lazy(() => import("./components/UpdateProduct"));
-const TrendsCurrency = lazy(() => import("./components/TrendsCurrency"));
+// const TrendsCurrency = lazy(() => import("./components/TrendsCurrency"));
 const RandomCity = lazy(() => import("./components/RandomCity"));
 const Testing = lazy(() => import("./components/Testing"));
 const Slider = lazy(() => import("./components/Slider"));
+const Clock = lazy(() => import("./components/Clock"));
 
 function App() {
   const [colorMode, setColorMode] = useState("dark");
@@ -47,10 +48,11 @@ function App() {
               <Route path="/shop" element={<Shop />} />
               <Route path="/update-product/:id" element={<UpdateProduct />} />
               <Route path="/vacations" element={<Vacations />} />
-              <Route path="/trends" element={<TrendsCurrency />} />
+              {/* <Route path="/trends" element={<TrendsCurrency />} /> */}
               <Route path="/random-city" element={<RandomCity />} />
               <Route path="/slider" element={<Slider />} />
               <Route path="/testing" element={<Testing />} />
+              <Route path="/clock" element={<Clock />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Routes>

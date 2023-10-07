@@ -34,8 +34,8 @@ const pages = [
   },
   {
     id: 4,
-    label: "Trends",
-    link: "/trends",
+    label: "Clock",
+    link: "/clock",
   },
   {
     id: 5,
