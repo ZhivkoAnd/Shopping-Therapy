@@ -44,11 +44,16 @@ const pages = [
   },
   {
     id: 6,
+    label: "Form Validation",
+    link: "/form",
+  },
+  {
+    id: 7,
     label: "Testing",
     link: "/testing",
   },
   {
-    id: 7,
+    id: 8,
     label: "Slider",
     link: "/slider",
   },

@@ -10,6 +10,7 @@ import "../styles/RandomCity.scss";
 import "../styles/ActionBar.scss";
 import "../styles/ErrorUI.scss";
 import "../styles/Footer.scss";
+import "../styles/Form.scss";
 
 import Layout from "./components/ui/Layout";
 import Admin from "./components/Admin";
@@ -26,6 +27,7 @@ const RandomCity = lazy(() => import("./components/RandomCity"));
 const Testing = lazy(() => import("./components/Testing"));
 const Slider = lazy(() => import("./components/Slider"));
 const Clock = lazy(() => import("./components/Clock"));
+const Form = lazy(() => import("./components/Form"));
 
 function App() {
   const [colorMode, setColorMode] = useState("dark");
@@ -52,6 +54,7 @@ function App() {
               <Route path="/random-city" element={<RandomCity />} />
               <Route path="/slider" element={<Slider />} />
               <Route path="/testing" element={<Testing />} />
+              <Route path="/form" element={<Form />} />
               <Route path="/clock" element={<Clock />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
