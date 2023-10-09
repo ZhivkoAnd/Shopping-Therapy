@@ -17,7 +17,7 @@ const Pokemons = () => {
   }
 
   const {data: allPokemons} = useQuery(['pokemons'], fetchAllPokemons) // Fetch all pokemons and give them 'pokemons' unique id
-  const {data: clickedPokemon} = useQuery([pokemon], () => fetchSpecificPokemon(pokemon)) // fetch only the clicked pokemon and give him dynamic id
+  const {data: clickedPokemon} = useQuery(['pokemons', pokemon], () => fetchSpecificPokemon(pokemon)) // fetch only the clicked pokemon and give him dynamic id
 
   return (
     <>
