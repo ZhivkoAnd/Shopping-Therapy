@@ -49,11 +49,16 @@ const pages = [
   },
   {
     id: 7,
+    label: "Pokemons",
+    link: "/pokemons",
+  },
+  {
+    id: 8,
     label: "Testing",
     link: "/testing",
   },
   {
-    id: 8,
+    id: 9,
     label: "Slider",
     link: "/slider",
   },
