@@ -44,23 +44,33 @@ const pages = [
   },
   {
     id: 6,
+    label: "Guess Game",
+    link: "/guess-game",
+  },
+  {
+    id: 7,
     label: "Form Validation",
     link: "/form",
   },
   {
-    id: 7,
+    id: 8,
     label: "Pokemons",
     link: "/pokemons",
   },
   {
-    id: 8,
+    id: 9,
     label: "Testing",
     link: "/testing",
   },
   {
-    id: 9,
+    id: 10,
     label: "Slider",
     link: "/slider",
+  },
+  {
+    id: 11,
+    label: "Neww",
+    link: "/neww",
   },
 ];
 

@@ -24,6 +24,8 @@ const Register = lazy(() => import("./components/ui/RegisterPanel"));
 const UpdateProduct = lazy(() => import("./components/UpdateProduct"));
 // const TrendsCurrency = lazy(() => import("./components/TrendsCurrency"));
 const RandomCity = lazy(() => import("./components/RandomCity"));
+const GuessGame = lazy(() => import("./components/GuessGame"));
+const Neww = lazy(() => import("./components/Neww"));
 const Testing = lazy(() => import("./components/Testing"));
 const Pokemons = lazy(() => import("./components/Pokemons"));
 const Slider = lazy(() => import("./components/Slider"));
@@ -53,6 +55,8 @@ function App() {
               <Route path="/vacations" element={<Vacations />} />
               {/* <Route path="/trends" element={<TrendsCurrency />} /> */}
               <Route path="/random-city" element={<RandomCity />} />
+              <Route path="/guess-game" element={<GuessGame />} />
+              <Route path="/neww" element={<Neww />} />
               <Route path="/pokemons" element={<Pokemons />} />
               <Route path="/slider" element={<Slider />} />
               <Route path="/testing" element={<Testing />} />
