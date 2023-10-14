@@ -25,7 +25,7 @@ const UpdateProduct = lazy(() => import("./components/UpdateProduct"));
 // const TrendsCurrency = lazy(() => import("./components/TrendsCurrency"));
 const RandomCity = lazy(() => import("./components/RandomCity"));
 const GuessGame = lazy(() => import("./components/GuessGame"));
-const Neww = lazy(() => import("./components/Neww"));
+const SearchSynonyms = lazy(() => import("./components/SearchSynonyms"));
 const Testing = lazy(() => import("./components/Testing"));
 const Pokemons = lazy(() => import("./components/Pokemons"));
 const Slider = lazy(() => import("./components/Slider"));
@@ -56,7 +56,7 @@ function App() {
               {/* <Route path="/trends" element={<TrendsCurrency />} /> */}
               <Route path="/random-city" element={<RandomCity />} />
               <Route path="/guess-game" element={<GuessGame />} />
-              <Route path="/neww" element={<Neww />} />
+              <Route path="/search-synonyms" element={<SearchSynonyms />} />
               <Route path="/pokemons" element={<Pokemons />} />
               <Route path="/slider" element={<Slider />} />
               <Route path="/testing" element={<Testing />} />

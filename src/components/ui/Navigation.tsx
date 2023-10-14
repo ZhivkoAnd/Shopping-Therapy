@@ -69,8 +69,8 @@ const pages = [
   },
   {
     id: 11,
-    label: "Neww",
-    link: "/neww",
+    label: "SearchSynonyms",
+    link: "/search-synonyms",
   },
 ];
 
