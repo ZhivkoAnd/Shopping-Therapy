@@ -2,15 +2,6 @@ import {useState, useEffect} from 'react'
 
 const Neww = () => {
 
-  const pairs = {
-    Bulgaria: 'Sofia',
-    Denmark: 'Copenhagen',
-    Sweden: 'Stockholm',
-    Romania: 'Bucharest'
-  };
-
-  console.log(pairs['Bulgaria'])
-
   return (
     <>
     <div>

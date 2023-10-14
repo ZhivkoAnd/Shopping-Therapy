@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
  type PairsType = {
     [key: string]: string;
@@ -15,15 +15,20 @@ const GuessGame = () => {
 
   const countries = Object.keys(pairs);
   const cities = Object.values(pairs);
+  //  const [options, setOptions] = useState(Object.entries(pairs).flat().sort(() => Math.random() - 0.5));
+
   
   const [options, setOptions] = useState([...countries, ...cities].sort(() => Math.random() - 0.5));
   const [selected, setSelected] = useState<string | null>(null);
   
-  const checkMe = (option: string) => {
+  const checkMe =  (option: string) => {
     // If an option is already selected
     if (selected) {
       // Check if the selected option corresponds to the clicked option
-      if (pairs[selected] === option || pairs[option] === selected) {
+      // Case 1 - if the already selected country's city is the same as the clicked one ex - "pairs[Bulgaria] === Sofia"
+      // Case 2 - if the already selected city corresponds to the clicked country's city - "Sofia === pairs[Bulgaria]"
+      // We cannot have only one option because we don't know which one the user will click first
+      if (pairs[selected] === option || selected === pairs[option]) {
         // Remove both the selected option and the clicked option
         setOptions((options) => options.filter((opt) => opt !== selected && opt !== option));
         setSelected(null); // Reset the selected option
