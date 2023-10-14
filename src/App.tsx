@@ -26,6 +26,7 @@ const UpdateProduct = lazy(() => import("./components/UpdateProduct"));
 const RandomCity = lazy(() => import("./components/RandomCity"));
 const GuessGame = lazy(() => import("./components/GuessGame"));
 const SearchSynonyms = lazy(() => import("./components/SearchSynonyms"));
+const BreakingBad = lazy(() => import("./components/BreakingBad"));
 const Testing = lazy(() => import("./components/Testing"));
 const Pokemons = lazy(() => import("./components/Pokemons"));
 const Slider = lazy(() => import("./components/Slider"));
@@ -58,6 +59,7 @@ function App() {
               <Route path="/guess-game" element={<GuessGame />} />
               <Route path="/search-synonyms" element={<SearchSynonyms />} />
               <Route path="/pokemons" element={<Pokemons />} />
+              <Route path="/breaking-bad" element={<BreakingBad />} />
               <Route path="/slider" element={<Slider />} />
               <Route path="/testing" element={<Testing />} />
               <Route path="/form" element={<Form />} />

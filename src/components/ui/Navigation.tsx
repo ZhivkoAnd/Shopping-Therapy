@@ -69,8 +69,13 @@ const pages = [
   },
   {
     id: 11,
-    label: "SearchSynonyms",
+    label: "Search Synonyms",
     link: "/search-synonyms",
+  },
+  {
+    id: 12,
+    label: "Breaking Bad",
+    link: "/breaking-bad",
   },
 ];
 
