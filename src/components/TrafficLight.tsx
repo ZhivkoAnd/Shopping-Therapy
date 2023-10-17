@@ -27,6 +27,7 @@ const TrafficLight = () => {
    
   return (
     <div className='traffic-lights'>
+        {/* <div className={"light stop" + (state === 'stop' ? ' on' : '')}/> */}
         <div className={getStopLightClass('stop')}/>
         <div className={getStopLightClass('slow')}/>
         <div className={getStopLightClass('go')}/>
