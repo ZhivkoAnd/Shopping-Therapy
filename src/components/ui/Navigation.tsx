@@ -77,6 +77,16 @@ const pages = [
     label: "Breaking Bad",
     link: "/breaking-bad",
   },
+  {
+    id: 13,
+    label: "Guess Color",
+    link: "/guess-color",
+  },
+  {
+    id: 14,
+    label: "Traffic Light",
+    link: "/traffic-light",
+  },
 ];
 
 interface Props {

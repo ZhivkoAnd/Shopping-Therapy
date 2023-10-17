@@ -144,3 +144,31 @@ h2 {
     font-size: 1.4rem;
   }
 }
+
+.stop {
+  background-color: red;
+}
+.slow {
+  background-color: yellow;
+}
+.go {
+  background-color: green;
+}
+
+.light {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.traffic-lights {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+// Any light that doesn't have 'on' in it's class
+.light:not(.on) {
+  background-color: gray;
+}
