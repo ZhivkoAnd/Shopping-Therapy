@@ -145,6 +145,7 @@ h2 {
   }
 }
 
+// ------------- Traffic Lights ----------------
 .stop {
   background-color: red;
 }
@@ -171,4 +172,50 @@ h2 {
 // Any light that doesn't have 'on' in it's class
 .light:not(.on) {
   background-color: gray;
+}
+
+// ------------- GRID ----------------
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, 30px);
+}
+
+.cell {
+  border: 1px solid white;
+  width: 30px;
+}
+
+.cell input {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+// ------------- Guack ----------------
+
+.guack-grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.guack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem
+}
+
+.guack-grid-element {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem
 }

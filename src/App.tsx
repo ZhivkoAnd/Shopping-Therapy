@@ -34,6 +34,7 @@ const TrafficLight = lazy(() => import("./components/TrafficLight"));
 const Slider = lazy(() => import("./components/Slider"));
 const Clock = lazy(() => import("./components/Clock"));
 const Form = lazy(() => import("./components/Form"));
+const Guack = lazy(() => import("./components/Guack"));
 
 function App() {
   const [colorMode, setColorMode] = useState("dark");
@@ -70,6 +71,7 @@ function App() {
               <Route path="/clock" element={<Clock />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/guack" element={<Guack />} />
             </Routes>
           </Layout>
         </Suspense>

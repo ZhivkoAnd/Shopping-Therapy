@@ -87,6 +87,11 @@ const pages = [
     label: "Traffic Light",
     link: "/traffic-light",
   },
+  {
+    id: 15,
+    label: "Guack",
+    link: "/guack",
+  },
 ];
 
 interface Props {
