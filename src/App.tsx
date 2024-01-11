@@ -35,6 +35,7 @@ const Slider = lazy(() => import("./components/Slider"));
 const Clock = lazy(() => import("./components/Clock"));
 const Form = lazy(() => import("./components/Form"));
 const Guack = lazy(() => import("./components/Guack"));
+const Table3D = lazy(() => import("./components/Table3D"));
 
 function App() {
   const [colorMode, setColorMode] = useState("dark");
@@ -72,6 +73,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/guack" element={<Guack />} />
+              <Route path="/table3D" element={<Table3D />} />
             </Routes>
           </Layout>
         </Suspense>

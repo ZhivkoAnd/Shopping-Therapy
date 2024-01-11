@@ -92,6 +92,11 @@ const pages = [
     label: "Guack",
     link: "/guack",
   },
+  {
+    id: 16,
+    label: "Table3D",
+    link: "/table3D",
+  },
 ];
 
 interface Props {
