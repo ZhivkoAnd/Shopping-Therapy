@@ -107,6 +107,11 @@ const pages = [
     label: "Context API",
     link: "/contextapi",
   },
+  {
+    id: 19,
+    label: "Redux",
+    link: "/redux",
+  },
 ];
 
 interface Props {

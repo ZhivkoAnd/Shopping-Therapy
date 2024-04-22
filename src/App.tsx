@@ -42,6 +42,7 @@ const Guack = lazy(() => import("./components/Guack"));
 const Table3D = lazy(() => import("./components/Table3D"));
 const TicTacToe = lazy(() => import("./components/TicTacToe"));
 const ContextAPI = lazy(() => import("./components/ContextAPI"));
+const Redux = lazy(() => import("./components/Redux"));
 
 function App() {
   const [colorMode, setColorMode] = useState("dark");
@@ -84,6 +85,7 @@ function App() {
                 <Route path="/table3D" element={<Table3D />} />
                 <Route path="/tictactoe" element={<TicTacToe />} />
                 <Route path="/contextapi" element={<ContextAPI />} />
+                <Route path="/redux" element={<Redux />} />
               </Routes>
             </Layout>
           </Suspense>
