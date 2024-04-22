@@ -1,6 +1,9 @@
 import { useState, lazy, Suspense } from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { AppProvider } from './components/Context/Context';
+
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles/Global.scss";
 import "../styles/Trends.scss";
@@ -27,6 +30,7 @@ const RandomCity = lazy(() => import("./components/RandomCity"));
 const GuessGame = lazy(() => import("./components/GuessGame"));
 const SearchSynonyms = lazy(() => import("./components/SearchSynonyms"));
 const BreakingBad = lazy(() => import("./components/BreakingBad"));
+const ShowProfiles = lazy(() => import("./components/ShowProfiles"));
 const Testing = lazy(() => import("./components/Testing"));
 const Pokemons = lazy(() => import("./components/Pokemons"));
 const GuessColor = lazy(() => import("./components/GuessColor"));
@@ -36,6 +40,8 @@ const Clock = lazy(() => import("./components/Clock"));
 const Form = lazy(() => import("./components/Form"));
 const Guack = lazy(() => import("./components/Guack"));
 const Table3D = lazy(() => import("./components/Table3D"));
+const TicTacToe = lazy(() => import("./components/TicTacToe"));
+const ContextAPI = lazy(() => import("./components/ContextAPI"));
 
 function App() {
   const [colorMode, setColorMode] = useState("dark");
@@ -49,36 +55,41 @@ function App() {
   };
 
   return (
-    <div className={`App ${colorMode}`}>
-      <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Layout lightMode={lightMode} darkMode={darkMode}>
-            <Routes>
-              <Route path="/" element={<Admin />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/update-product/:id" element={<UpdateProduct />} />
-              <Route path="/vacations" element={<Vacations />} />
-              {/* <Route path="/trends" element={<TrendsCurrency />} /> */}
-              <Route path="/random-city" element={<RandomCity />} />
-              <Route path="/guess-game" element={<GuessGame />} />
-              <Route path="/search-synonyms" element={<SearchSynonyms />} />
-              <Route path="/pokemons" element={<Pokemons />} />
-              <Route path="/breaking-bad" element={<BreakingBad />} />
-              <Route path="/guess-color" element={<GuessColor />} />
-              <Route path="/traffic-light" element={<TrafficLight />} />
-              <Route path="/slider" element={<Slider />} />
-              <Route path="/testing" element={<Testing />} />
-              <Route path="/form" element={<Form />} />
-              <Route path="/clock" element={<Clock />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/guack" element={<Guack />} />
-              <Route path="/table3D" element={<Table3D />} />
-            </Routes>
-          </Layout>
-        </Suspense>
-      </BrowserRouter>
-    </div>
+    <AppProvider>
+      <div className={`App ${colorMode}`}>
+        <BrowserRouter>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Layout lightMode={lightMode} darkMode={darkMode}>
+              <Routes>
+                <Route path="/" element={<Admin />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/update-product/:id" element={<UpdateProduct />} />
+                <Route path="/vacations" element={<Vacations />} />
+                {/* <Route path="/trends" element={<TrendsCurrency />} /> */}
+                <Route path="/random-city" element={<RandomCity />} />
+                <Route path="/guess-game" element={<GuessGame />} />
+                <Route path="/search-synonyms" element={<SearchSynonyms />} />
+                <Route path="/pokemons" element={<Pokemons />} />
+                <Route path="/breaking-bad" element={<BreakingBad />} />
+                <Route path="/guess-color" element={<GuessColor />} />
+                <Route path="/traffic-light" element={<TrafficLight />} />
+                <Route path="/slider" element={<Slider />} />
+                <Route path="/testing" element={<Testing />} />
+                <Route path="/form" element={<Form />} />
+                <Route path="/clock" element={<Clock />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/guack" element={<Guack />} />
+                <Route path="/showProfiles" element={<ShowProfiles />} />
+                <Route path="/table3D" element={<Table3D />} />
+                <Route path="/tictactoe" element={<TicTacToe />} />
+                <Route path="/contextapi" element={<ContextAPI />} />
+              </Routes>
+            </Layout>
+          </Suspense>
+        </BrowserRouter>
+      </div>
+    </AppProvider>
   );
 }
 

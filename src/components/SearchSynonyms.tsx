@@ -50,7 +50,7 @@ const SearchSynonyms = () => {
   );
 };
 
-// export default SearchSynonyms;
+export default SearchSynonyms;
 
 
 

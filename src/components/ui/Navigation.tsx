@@ -97,6 +97,16 @@ const pages = [
     label: "Table3D",
     link: "/table3D",
   },
+  {
+    id: 17,
+    label: "Tic Tac Toe",
+    link: "/tictactoe",
+  },
+  {
+    id: 18,
+    label: "Context API",
+    link: "/contextapi",
+  },
 ];
 
 interface Props {

@@ -1,31 +1,44 @@
-import { useState } from 'react'
 import { useQuery } from "@tanstack/react-query"
+import { useRef, useState } from "react"
 
-const Pokemons = () => {
+const Testing = () => {
 
-  const [pokemon, setPokemon] = useState<any>("")
+  const [activePokemon, setActivePokemon] = useState('')
 
-  const fetchAllPokemons = async() =>{
-    const fetchedPokemons = await fetch(`https://pokeapi.co/api/v2/pokemon/`);
-    return fetchedPokemons.json()
+  const fetchPokemons = async () => {
+    const pokemons = await fetch('https://pokeapi.co/api/v2/pokemon/')
+    return pokemons.json()
   }
 
-  // We want to fetch the passed pokemon
-  const fetchSpecificPokemon = async(pokemon: {}) =>{
-    const fetchedPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-    return fetchedPokemon.json()
+    const fetchSpecificPokemon = async (pokemon: {}) => {
+    const pokemons = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+    return pokemons.json()
   }
 
-  const {data: allPokemons} = useQuery(['pokemons'], fetchAllPokemons) // Fetch all pokemons and give them 'pokemons' unique id
-  const {data: clickedPokemon} = useQuery(['pokemons', pokemon], () => fetchSpecificPokemon(pokemon)) // fetch only the clicked pokemon and give him dynamic id
+  const {data} = useQuery(['pokemons'], fetchPokemons)
+  const {data: pokemon} = useQuery(['pokemon', activePokemon], () => fetchSpecificPokemon(activePokemon))
+
+  const nameRef = useRef<any>('')
+
+  const submitPokemon = (e: any) => {
+    e.preventDefault()
+    setActivePokemon(nameRef.current.value)
+  }
+
+  console.log(nameRef.current.value)
 
   return (
-    <>
-      {allPokemons?.results.map((e: any)=> <button onClick={() =>setPokemon(e.name)}>{e.name}</button>)}
-      <div>Id : {clickedPokemon?.id}</div>
-    </>
+    <div>
+      {data?.results?.map((pokemon: {name: string}) => {
+        return <button key= {pokemon.name} onClick={() => setActivePokemon(pokemon.name)}>{pokemon.name}</button>
+      })}
+      <div>{pokemon ? pokemon.id : ''}</div>
+      <form onSubmit={submitPokemon}>
+        <input ref={nameRef}/><br/>
+        <button type="submit" >Find me</button>
+      </form>
+    </div>
   )
 }
 
-
-export default Pokemons
+export default Testing
