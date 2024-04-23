@@ -1,9 +1,12 @@
 // This file holds the redux store
 
-import  {configureStore} from '@reduxjs/toolkit'
+import {configureStore} from '@reduxjs/toolkit'
+import counterReducer from './counter/counterSlice'
 
 export const store = configureStore({
-    reducer: {}
+    reducer: {
+        counter: counterReducer
+    }
 })
 
 export type RootState = ReturnType<typeof store.getState>
